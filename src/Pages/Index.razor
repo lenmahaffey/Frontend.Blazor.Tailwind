@@ -1,0 +1,114 @@
+﻿@page "/"
+@inject IJSRuntime js;
+
+<PageTitle>Index</PageTitle>
+<div class="h1 text-center">Component demo</div>
+<div class="row border border-2 border-black pb-4 pt-4 mb-4">
+
+    <div class="col">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmDemo">
+            Open Confirmation Demo
+        </button>
+        <ConfirmationDialog 
+            Id="confirmDemo" 
+            Title="Confirm Modal Demo" 
+            Message="This is a demo of creating a confimation demo"
+            CancelButtonText="Nevermind"
+            OkButtonText="Whatever"
+            DisableEscape=true
+            UserResponse="OnResponse">
+        </ConfirmationDialog>
+        @if(UserInput != null)
+        {
+            <p>You selected @UserInput</p>
+        }
+    </div>
+
+    <div class="col">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#spinner">
+            Open Spinner Demo
+        </button>
+        <SpinnerDialog 
+            Id="spinner" 
+            IsStatic="false"
+            Message="Spinning the spinner">
+        </SpinnerDialog>
+    </div>
+
+    <div class="col">
+        <EditForm Model="@NotificationMessage" OnValidSubmit="@SendNotification">
+            <DataAnnotationsValidator />
+            <InputSelect id="notificationMessageTypeSelect" @bind-Value="@NotificationMessage.Type" class="form-select">
+                @foreach (var messageType in Enum.GetValues(typeof(MessageType)))
+                {
+                    <option value="@messageType">@messageType</option>
+                }
+            </InputSelect>
+            <label for="notificationMessageTypeSelect" class="form-label ps-2">Type</label>
+            
+            <InputText id="notificationMessageTitleInput" @bind-Value="@NotificationMessage.Title" class="form-control"></InputText>
+            <div class="row">
+                <div class="col">
+                    <label for="notificationMessageTitleInput" class="form-label ps-2 col">Title</label>
+                </div>
+                <div class="col mm-text-danger">
+                    <ValidationMessage For="@(() => NotificationMessage.Title)" />
+                </div>
+            </div>
+
+            <InputText id="notificationMessageTextInput" @bind-Value="@NotificationMessage.Text" class="form-control"></InputText>
+            <div class="row">
+                <div class="col">
+                    <label for="messageTextInput" class="form-label ps-2">Text</label>
+                </div>
+                <div class="col mm-text-danger">
+                    <ValidationMessage class="mm-text-danger" For="@(() => NotificationMessage.Text)" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                Open Notification Demo
+            </button>
+
+        </EditForm>
+    </div>
+    <div class="col">
+        <EditForm Model="@AlertMessage" OnValidSubmit="@SendAlert">
+            <DataAnnotationsValidator />
+            <InputSelect id="alertMessageTypeSelect" @bind-Value="@AlertMessage.Type" class="form-select">
+                @foreach (var messageType in Enum.GetValues(typeof(MessageType)))
+                {
+                    <option value="@messageType">@messageType</option>
+                }
+            </InputSelect>
+            <label for="alertMessageTypeSelect" class="form-label ps-2">Type</label>
+
+            <InputText id="messageTextInput" @bind-Value="@AlertMessage.Text" class="form-control"></InputText>
+            <div class="row">
+                <div class="col">
+                    <label for="messageTextInput" class="form-label ps-2">Text</label>
+                </div>
+                <div class="col mm-text-danger">
+                    <ValidationMessage class="mm-text-danger" For="@(() => AlertMessage.Text)" />
+                </div>
+            </div>
+            <InputRadioGroup @bind-Value="@AlertMessage.AutoDismiss">
+                <div class="row text-center">
+                    <div class="col-5 text-center">
+                        Auto-dismiss:
+                    </div>
+                    <div class="col-1 me-3">
+                        <InputRadio Value="true" />Yes<br />
+                    </div>
+                    <div class="col-1">
+                        <InputRadio Value="false" />No<br />
+                    </div>
+                </div>
+            </InputRadioGroup>
+            <button type="submit" class="btn btn-primary">
+                Open Alert Demo
+            </button>
+        </EditForm>
+    </div>
+</div>
+
+<ColorSwatches></ColorSwatches>

@@ -1,0 +1,9 @@
+﻿@import '../_theme.scss';
+
+.spinner {
+    color: $mmRed;
+    border-color: $mmGreen;
+    background-color: $mmYellow;
+    width: 5rem;
+    height: 5rem;
+}

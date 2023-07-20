@@ -1,0 +1,34 @@
+﻿@import '../_theme.scss';
+@keyframes hideN {
+    to {
+        height: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.showAlert {
+    animation: fadeIn .5s ease-out 0s .5;
+}
+
+.dismissAlert {
+    animation: fadeOut .5s, hideN .1s ease-out .5s 1;
+}

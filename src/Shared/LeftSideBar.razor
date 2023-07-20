@@ -1,0 +1,12 @@
+﻿<div id="leftSideBarContainer" class="row align-items-center justify-content-center ms-4">
+    <div class="leftBar">
+        <ul class="flex-column mt-4">
+            @foreach(var link in Links)
+            {
+                <li class="nav-item h4">
+                    <NavLink href="@link.Value" class="nav-link">@link.Key</NavLink>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

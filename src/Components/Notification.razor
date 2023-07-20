@@ -1,0 +1,27 @@
+﻿<div id="notificationAnimationContainer" class="@((Message!.IsVisible == true) ? "showNotification" : "dismissNotification")">
+    <div id="@Id" class="toast mm-bg-light show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header @(SetBorderColor()) mm-bg-light">
+            @switch(Message?.Type)
+            {
+                case MessageType.Error:
+                    <i class="fa-solid fa-circle-xmark fa-xl mm-text-danger me-2"></i>
+                    break;
+
+                case MessageType.Warning:
+                    <i class="fa-solid fa-circle-exclamation fa-xl mm-text-warning me-2"></i>
+                    break;
+
+                case MessageType.Success:
+                    <i class="fa-solid fa-circle-check fa-xl mm-text-success me-2"></i>
+                    break;
+            }
+            <strong class="me-auto">@Message?.Title</strong>
+            <small class="text-muted">@Message?.Time.ToShortTimeString()</small>
+            <button type="button" class="btn-close" @onclick="hideToast"></button>
+        </div>
+        <div class="toast-body">
+            @Message?.Text
+            @Id
+        </div>
+    </div>
+</div>

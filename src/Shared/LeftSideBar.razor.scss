@@ -1,0 +1,18 @@
+﻿@import '../_theme.scss';
+
+#leftSideBarContainer{
+    height: 100%;
+}
+.leftBar {
+    color: white;
+    background-color: $mmBlack;
+    height: 90%;
+    width: 85%;
+}
+ul {
+    list-style-type: none;
+}
+/*nav {
+    cursor: pointer;
+    color: $mmWhite;
+}*/
