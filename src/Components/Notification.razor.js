@@ -1,6 +1,4 @@
-﻿export function detectAnimationEnd(id, callback)
+﻿export function detectAnimationEnd(id, dotnet)
 {
-    console.log("Hello World")
-
-    document.getElementById(id).addEventListener("animationend", callback.invokeMethodAsync('onAnimationEnd'));
+    document.getElementById(id).addEventListener("animationend", dotnet.invokeMethodAsync('onAnimationEnd'));
 };
