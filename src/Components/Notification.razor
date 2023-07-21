@@ -17,7 +17,7 @@
             }
             <strong class="me-auto">@Message?.Title</strong>
             <small class="text-muted">@Message?.Time.ToShortTimeString()</small>
-            <button type="button" class="btn-close" @onclick="hideToast"></button>
+            <button type="button" class="btn-close" @onclick="hideNotification"></button>
         </div>
         <div class="toast-body">
             @Message?.Text

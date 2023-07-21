@@ -7,25 +7,15 @@ namespace Blazor.Frontend.Components
     {
         [Parameter] public string Id { get; set; } = string.Empty;
         [Parameter] public Message? Message { get; set; } =  new Message();
-        private void hideToast()
+        private void hideNotification()
         {
-            //DeleteNotification.InvokeAsync(Message);
             Message!.IsVisible = false;
             Message!.IsDismissed = true;
         }
         private string SetBorderColor()
         {
-            switch(Message?.Type)
-            {
-                case MessageType.Error:
-                    return "errorBorder";
-                case MessageType.Warning:
-                    return "warningBorder";
-                case MessageType.Success:
-                    return "successBorder";
-                default:
-                    return "";
-            }
+            var result =  Enum.GetName(Message!.Type)?.ToLower() + "Border" ?? string.Empty;
+            return result;
         }
     }
 }
