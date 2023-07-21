@@ -29,6 +29,7 @@ namespace Blazor.Frontend.Classes
         [Required]
         public MessageType Type { get; set; } = MessageType.Error;
         public DateTime Time { get; set; } = DateTime.Now;
+        public MessageState State { get; set; } = MessageState.isHidden;
         public bool AutoDismiss { get; set; } = true;
         public bool IsDismissed { get; set; } = false;
         public bool HasDisplayed { get; set; } = false;

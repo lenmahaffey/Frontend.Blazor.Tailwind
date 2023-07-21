@@ -17,18 +17,52 @@ namespace Blazor.Frontend.Components
         {
             _js = await Js!.InvokeAsync<IJSObjectReference>("import", "./Components/Notification.razor.js");
         }
-        private  void hideNotification()
+
+        protected override void OnAfterRender(bool firstRender)
         {
-            _js!.InvokeVoidAsync("detectAnimationEnd", Id, DotNetObjectReference.Create(this));
+            if (firstRender)
+            {
+                _js!.InvokeVoidAsync("detectDisplayAnimationEnd", Id, DotNetObjectReference.Create(this));
+                Message!.State = MessageState.isDisplaying;
+            }
+            base.OnAfterRender(firstRender);
         }
 
-        [JSInvokable("onAnimationEnd")]
-        public void onAnimationEnd()
+        private void hideNotification()
         {
-            Message!.IsVisible = false;
-            Message!.IsDismissed = true;
+            _js!.InvokeVoidAsync("detectHideAnimationEnd", Id, DotNetObjectReference.Create(this));
+            Message!.State = MessageState.isDismissing;
         }
-        
+
+        [JSInvokable("onDisplayAnimationEnd")]
+        public void onDisplayAnimationEnd()
+        {
+            Message!.State = MessageState.isDisplayed;
+        }
+
+        [JSInvokable("onHideAnimationEnd")]
+        public void onHideAnimationEnd()
+        {
+            Message!.State = MessageState.isDismissed;
+            //MessageDismissed.InvokeAsync(Message);
+        }
+
+        private string getAnimationClass()
+        {
+            if (Message!.State == MessageState.isDisplaying)
+            {
+                return "showNotification";
+            }
+            else if (Message!.State == MessageState.isDismissing)
+            {
+                return "dismissNotification";
+            }
+            else if (Message!.State == MessageState.isHidden || Message!.State == MessageState.isDismissed)
+            {
+                return "hidden";
+            }
+            else { return ""; }
+        }
         private string SetBorderColor()
         {
             var result =  Enum.GetName(Message!.Type)?.ToLower() + "Border" ?? string.Empty;

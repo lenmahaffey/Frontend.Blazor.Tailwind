@@ -8,7 +8,7 @@
 
 @keyframes slideInDown {
     0% {
-        transform: translateY(-10%);
+        transform: translateY(-20%);
         opacity: 0;
     }
 
@@ -34,6 +34,28 @@
     width: 100%;
 }
 
+.hidden{
+    opacity: 0;
+    display: none;
+}
+
+.isDisplaying {
+    animation: slideInDown .75s ease-out 0s 1;
+    animation-fill-mode: forwards;
+}
+
+.isDisplayed{
+
+}
+
+.isDismissing {
+    animation: slideOutRight .5s ease-out 0s 1, hide .1s linear .5s 1;
+    animation-fill-mode: forwards;
+}
+
+.isDismissed{
+
+}
 .showNotification {
     animation: slideInDown .75s ease-out 0s 1;
 }
