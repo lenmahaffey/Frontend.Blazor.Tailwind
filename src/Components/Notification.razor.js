@@ -2,5 +2,5 @@
 {
     console.log("Hello World")
 
-    document.getElementById(id).addEventListener("animationend", callback.invokeMethodAsync('onAnimationComplete'));
+    document.getElementById(id).addEventListener("animationend", callback.invokeMethodAsync('onAnimationEnd'));
 };
