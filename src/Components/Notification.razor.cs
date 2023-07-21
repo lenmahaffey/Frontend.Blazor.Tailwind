@@ -9,6 +9,7 @@ namespace Blazor.Frontend.Components
         [Inject] public IJSRuntime? Js { get; set; }
         [Parameter] public string Id { get; set; } = string.Empty;
         [Parameter] public Message? Message { get; set; } =  new Message();
+        [Parameter] public EventCallback<Message> MessageDismissed { get; set; }    
 
         private IJSObjectReference? _js;
 

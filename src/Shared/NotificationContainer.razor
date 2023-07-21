@@ -3,7 +3,7 @@
         <div id="notifications" class="row align-content-start justify-content-start flex-column-reverse">
         @foreach (var message in Notifications)
         {
-            <Notification Id="@Notifications.IndexOf(message).ToString()" Message="message"></Notification>
+            <Notification Id="@Notifications.IndexOf(message).ToString()" Message="message" MessageDismissed="purgeOldNotifications"></Notification>
         }
         </div>
     </div>
