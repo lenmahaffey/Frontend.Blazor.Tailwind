@@ -1,11 +1,19 @@
 ﻿export function detectDisplayAnimationEnd(id, dotnet)
 {
-    console.log(id);
-    console.log("Animation start");
-    document.getElementById(id).addEventListener("animationend", dotnet.invokeMethodAsync('onDisplayAnimationEnd'));
+    console.log("Begin Display Animation");
+    document.getElementById(id).addEventListener("animationend", displayAnimationEnd(dotnet));
 };
 
 export function detectHideAnimationEnd(id, dotnet) {
-    console.log("animation end");
-    document.getElementById(id).addEventListener("animationend", dotnet.invokeMethodAsync('onHideAnimationEnd'));
+
+    console.log("Begin Hide Animation");
+    document.getElementById(id).addEventListener("animationend", hideAnimationEnd(dotnet));
 };
+
+function hideAnimationEnd(dotnet) {
+    dotnet.invokeMethodAsync('onHideAnimationEnd')
+}
+
+function displayAnimationEnd(dotnet) {
+    dotnet.invokeMethodAsync('onDisplayAnimationEnd')
+}
