@@ -26,7 +26,7 @@ namespace Blazor.Frontend.Shared
 
         public void purgeOldNotifications()
         {
-            var old = Notifications.Where(x => x.State == MessageState.isDismissed).ToList();
+            var old = Notifications.Where(x => !x.IsVisible && x.HasDisplayed == true).ToList();
             if (old.Count() == Notifications.Count())
             {
                 Notifications = new List<Message>();

@@ -20,11 +20,22 @@ namespace Blazor.Frontend.Components
 
         protected override void OnAfterRender(bool firstRender)
         {
-            if (firstRender)
+            if (!Message!.IsDismissed)
             {
                 Message!.State = MessageState.isDisplaying;
+
             }
+
             base.OnAfterRender(firstRender);
+        }
+
+        protected override bool ShouldRender()
+        {
+            if (Message!.HasDisplayed && !Message!.IsVisible)
+            {
+                return false;
+            }
+            return true;
         }
 
         private  void hideNotification()
@@ -33,16 +44,12 @@ namespace Blazor.Frontend.Components
             Message!.State = MessageState.isDismissing;
         }
 
-        [JSInvokable("onDisplayAnimationEnd")]
-        public void onDisplayAnimationEnd()
-        {
-            Message!.State = MessageState.isDisplayed;
-        }
-
         [JSInvokable("onHideAnimationEnd")]
         public void onHideAnimationEnd()
         {
             Message!.State = MessageState.isDismissed;
+            Message!.HasDisplayed = true;
+            Message!.IsVisible = false;
         }
 
         private string getAnimationClass()

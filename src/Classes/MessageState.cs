@@ -2,7 +2,6 @@
 {
     public enum MessageState
     {
-        isHidden,
         isDisplaying,
         isDisplayed,
         isDismissing,
