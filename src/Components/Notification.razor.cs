@@ -1,6 +1,7 @@
 ﻿using Blazor.Frontend.Classes;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using System.Collections.Generic;
 
 namespace Blazor.Frontend.Components
 {
@@ -48,6 +49,9 @@ namespace Blazor.Frontend.Components
             Message!.State = MessageState.isDismissed;
             Message!.HasDisplayed = true;
             Message!.IsVisible = false;
+            //This will clear each message from the backing list when the notification
+            //is dismissed but it breaks the CSS animations
+            //MessageDismissed.InvokeAsync(Message); 
         }
 
         private string getAnimationClass()
