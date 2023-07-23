@@ -1,12 +1,4 @@
-﻿export function detectDisplayAnimationEnd(id, dotnet)
-{
-    console.log("Begin Display Animation");
-    document.getElementById(id).addEventListener("animationend", displayAnimationEnd(dotnet));
-};
-
-export function detectHideAnimationEnd(id, dotnet) {
-
-    console.log("Begin Hide Animation");
+﻿export function detectHideAnimationEnd(id, dotnet) {
     document.getElementById(id).addEventListener("animationend", hideAnimationEnd(dotnet));
 };
 
