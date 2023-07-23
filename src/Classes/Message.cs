@@ -5,9 +5,7 @@ namespace Blazor.Frontend.Classes
     public class Message : EventArgs
     {
         public Message()
-        {
-            
-        }
+        {}
 
         public Message(Message m)
         {

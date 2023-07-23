@@ -23,9 +23,7 @@ namespace Blazor.Frontend.Components
             if (!Message!.IsDismissed)
             {
                 Message!.State = MessageState.isDisplaying;
-
             }
-
             base.OnAfterRender(firstRender);
         }
 

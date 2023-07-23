@@ -3,10 +3,7 @@
         <div id="notifications" class="row align-content-start justify-content-start flex-column-reverse">
         @foreach (var message in Notifications)
         {
-            if (message.IsVisible || message.State != MessageState.isDismissed)
-            {
-                <Notification Id="@Notifications.IndexOf(message).ToString()" Message="message" MessageDismissed="purgeOldNotifications"></Notification>
-            }
+            <Notification Id="@Notifications.IndexOf(message).ToString()" Message="message" MessageDismissed="purgeOldNotifications"></Notification>
         }
         </div>
     </div>
