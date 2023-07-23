@@ -18,7 +18,7 @@ namespace Blazor.Frontend.Shared
 
         public void OnMessageReceived(object? sender, Message m)
         {
-            //purgeOldNotifications();
+            purgeOldNotifications();
             var message = new Message(m);
             Notifications.Add(message);
             StateHasChanged();
@@ -27,9 +27,10 @@ namespace Blazor.Frontend.Shared
         public void purgeOldNotifications()
         {
             var old = Notifications.Where(x => x.State == MessageState.isDismissed).ToList();
-            if (old == Notifications)
+            if (old.Count() == Notifications.Count())
             {
-                Notifications.Clear();
+                Notifications = new List<Message>();
+                StateHasChanged();
             }
         }
         public void Dispose()

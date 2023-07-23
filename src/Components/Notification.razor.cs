@@ -22,16 +22,18 @@ namespace Blazor.Frontend.Components
         {
             if (firstRender)
             {
-                _js!.InvokeVoidAsync("detectDisplayAnimationEnd", Id, DotNetObjectReference.Create(this));
+                //_js!.InvokeVoidAsync("detectDisplayAnimationEnd", Id, DotNetObjectReference.Create(this));
                 Message!.State = MessageState.isDisplaying;
             }
             base.OnAfterRender(firstRender);
         }
 
-        private void hideNotification()
+        private  void hideNotification()
         {
             _js!.InvokeVoidAsync("detectHideAnimationEnd", Id, DotNetObjectReference.Create(this));
             Message!.State = MessageState.isDismissing;
+            //MessageDismissed.InvokeAsync(Message);
+            //Message.IsVisible = false;
         }
 
         [JSInvokable("onDisplayAnimationEnd")]
@@ -44,6 +46,7 @@ namespace Blazor.Frontend.Components
         public void onHideAnimationEnd()
         {
             Message!.State = MessageState.isDismissed;
+            //Message!.IsDismissed = true;
             //MessageDismissed.InvokeAsync(Message);
         }
 
@@ -57,7 +60,7 @@ namespace Blazor.Frontend.Components
             {
                 return "dismissNotification";
             }
-            else if (Message!.State == MessageState.isHidden || Message!.State == MessageState.isDismissed)
+            else if (Message!.State == MessageState.isDismissed)
             {
                 return "hidden";
             }
