@@ -12,8 +12,8 @@ namespace Blazor.Frontend.Shared
 
         protected override async Task OnInitializedAsync()
         {
-            _js = await Js!.InvokeAsync<IJSObjectReference>("import", "./Shared/MainLayout.razor.js");
-            await GetPageDeminsions();
+            //_js = await Js!.InvokeAsync<IJSObjectReference>("import", "./Shared/MainLayout.razor.js");
+            //await GetPageDeminsions();
             await base.OnInitializedAsync();
         }
 
