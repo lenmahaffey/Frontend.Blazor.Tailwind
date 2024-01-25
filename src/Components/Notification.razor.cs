@@ -1,9 +1,9 @@
-﻿using Blazor.Frontend.Classes;
+﻿using Blazor.Frontend.Bootstrap.Classes;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Collections.Generic;
 
-namespace Blazor.Frontend.Components
+namespace Blazor.Frontend.Bootstrap.Components
 {
     public partial class Notification
     {

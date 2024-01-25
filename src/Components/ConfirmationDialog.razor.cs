@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 
-namespace Blazor.Frontend.Components
+namespace Blazor.Frontend.Bootstrap.Components
 {
     public partial class ConfirmationDialog
     {

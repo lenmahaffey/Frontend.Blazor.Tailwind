@@ -1,8 +1,8 @@
-﻿using Blazor.Frontend.Classes;
-using Blazor.Frontend.Services;
+﻿using Blazor.Frontend.Bootstrap.Classes;
+using Blazor.Frontend.Bootstrap.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace Blazor.Frontend.Pages
+namespace Blazor.Frontend.Bootstrap.Pages
 {
     public partial class Index
     {

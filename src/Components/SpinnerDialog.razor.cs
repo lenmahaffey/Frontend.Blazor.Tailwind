@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace Blazor.Frontend.Components
+namespace Blazor.Frontend.Bootstrap.Components
 {
     public partial class SpinnerDialog
     {

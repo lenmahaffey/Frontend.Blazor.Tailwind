@@ -1,4 +1,4 @@
-﻿namespace Blazor.Frontend.Shared
+﻿namespace Blazor.Frontend.Bootstrap.Shared
 {
     public partial class LeftSideBar
     {

@@ -1,4 +1,4 @@
-﻿namespace Blazor.Frontend.Classes
+﻿namespace Blazor.Frontend.Bootstrap.Classes
 {
     public enum MessageType
     {

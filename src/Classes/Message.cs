@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Blazor.Frontend.Classes
+namespace Blazor.Frontend.Bootstrap.Classes
 {
     public class Message : EventArgs
     {

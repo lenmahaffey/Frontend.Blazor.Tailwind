@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
-namespace Blazor.Frontend.Shared
+namespace Blazor.Frontend.Bootstrap.Shared
 {
     public partial class MainLayout
     {
