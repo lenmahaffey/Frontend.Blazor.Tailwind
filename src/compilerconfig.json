@@ -58,5 +58,9 @@
   {
     "outputFile": "Layout/MainLayout.razor.css",
     "inputFile": "Layout/MainLayout.razor.scss"
+  },
+  {
+    "outputFile": "Areas/Demo/Components/AlertDemo.razor.css",
+    "inputFile": "Areas/Demo/Components/AlertDemo.razor.scss"
   }
 ]

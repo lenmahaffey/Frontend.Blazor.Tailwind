@@ -11,20 +11,6 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
         [Inject] public IJSRuntime? Js { get; set; }
         private IJSObjectReference? _js;
         private string Id { get; } = Guid.NewGuid().ToString("N");
-        private string borderColor
-        {
-            get
-            {
-                if (Name == string.Empty)
-                {
-                    return "";
-                }
-                else
-                {
-                    return $"borderColor";
-                }
-            }
-        }
         [Parameter] public string Name { get; set; } = string.Empty;
         private string? rgbString { get; set; } = string.Empty;
         private string? hexString { get; set; } = string.Empty;

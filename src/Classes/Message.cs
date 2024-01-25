@@ -16,7 +16,7 @@ namespace Blazor.Frontend.Bootstrap.Classes
         [Required]
         public MessageType Type { get; set; } = MessageType.Error;
         public DateTime Time { get; set; } = DateTime.Now;
-        public bool AutoDismiss { get; set; } = false;
+        public bool AutoDismiss { get; set; } = true;
         public double DisplayTime { get; set; } = 3;
         public bool IsVisible { get; set; } = true;
         public override string ToString()
