@@ -17,6 +17,8 @@ namespace Blazor.Frontend.Bootstrap.Classes
         public MessageType Type { get; set; } = MessageType.Error;
         public DateTime Time { get; set; } = DateTime.Now;
         public bool AutoDismiss { get; set; } = true;
+        [Range(1,10, ErrorMessage = "Invalid")]
+        [RegularExpression(@"^\d*\.?\d{1,2}$", ErrorMessage = "Too Long")]
         public double DisplayTime { get; set; } = 3;
         public bool IsVisible { get; set; } = true;
         public override string ToString()

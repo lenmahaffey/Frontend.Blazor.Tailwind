@@ -20,22 +20,22 @@
         </div>
     </div>
     <div class="row ps-0 pe-0">
-        <div class="col">
-            <div class="form-check form-switch">
-                <div class="row  ms-1">
-                    <InputCheckbox class="form-check-input" type="checkbox" id="dismissSwitch" @bind-Value="@AlertMessage.AutoDismiss"></InputCheckbox>
-                    <label class="form-check-label" for="dismissSwitch">Auto-dismiss:</label>
+        <div class="col ">
+            <div class="form-switch row">
+                <div class="row ms-1">
+                    <InputCheckbox class="form-check-input col-1" type="checkbox" id="dismissSwitch" @bind-Value="@AlertMessage.AutoDismiss"></InputCheckbox>
+                    <div class="col" for="dismissSwitch">Auto-dismiss</div>
                 </div>
             </div>
         </div>
         <div class="col-3 ms-2 @(AlertMessage.AutoDismiss ? "visible": "invisible") pe-0">
             <div class="row">
-                <InputText id="displayTimeInput" @bind-Value="@AlertMessage.Text" class="form-control"></InputText>
+                <InputNumber id="displayTimeInput" @bind-Value="@AlertMessage.DisplayTime" class="form-control" />
                 <div class="col-1">
                     <label for="displayTimeInput" class="form-label ps-2">Time</label>
                 </div>
                 <div class="col">
-                    <ValidationMessage class="text-danger text-end" For="@(() => AlertMessage.Text)" />
+                    <ValidationMessage class="text-danger text-end" For="@(() => AlertMessage.DisplayTime)" />
                 </div>
             </div>
         </div>
