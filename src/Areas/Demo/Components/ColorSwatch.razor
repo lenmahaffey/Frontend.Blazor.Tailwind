@@ -1,0 +1,7 @@
+﻿<div  @onmouseover="@(() => OpenToolTip(this.Name))" class="col colorSwatch me-3 d-flex">
+    <div id="@Id" @ref="element" class="row align-content-center text-center swatch bg-@(Name.ToLower())">
+        <p class="text-light text-center fw-bolder @(Name.ToLower() == "light"  ? "text-dark" : "text-light")">@(Name.ToLower()[0].ToString().ToUpper() + Name.Substring(1))</p>
+        <p class="text-light text-center fw-bolder @(Name.ToLower() == "light"  ? "text-dark" : "text-light")">@(rgbString!.Replace(" ", ""))</p>
+        <p class="me-0 text-light text-center fw-bolder @(Name.ToLower() == "light"  ? "text-dark" : "text-light")">@(hexString)</p>
+    </div>
+</div>

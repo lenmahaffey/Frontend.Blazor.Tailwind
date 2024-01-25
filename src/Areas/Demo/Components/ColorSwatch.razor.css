@@ -1,0 +1,9 @@
+﻿.colorSwatch {
+  box-shadow: 0px 1px 5px 1px #909294 !important;
+  height: 200px;
+  border-radius: 50px;
+}
+
+.swatch {
+  border-radius: 50px;
+}

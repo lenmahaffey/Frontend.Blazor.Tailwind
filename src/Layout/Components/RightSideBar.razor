@@ -1,0 +1,14 @@
+﻿<div id="sideBarContainer" class="row align-items-center @(isActive ? "active" : "")">
+    <div class="col-1">
+        <button @onclick="ToggleVisibility" id="toggleButton" class="btn btn-dark rounded-circle">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+    </div>
+    <div id="rightSideBar" class="col border border-2 border-dark overflow-y-scroll card">
+        <div class="row card-body">
+            <div class="col">
+                <SectionOutlet SectionName="rightSideBarContent"></SectionOutlet>
+            </div>
+        </div>
+    </div>
+</div>

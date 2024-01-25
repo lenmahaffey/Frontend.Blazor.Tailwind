@@ -1,0 +1,54 @@
+﻿<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                @foreach (var group in Links)
+                {
+                    if (group.Links.Count == 1)
+                    {
+                        <li class="nav-item">
+                            <NavLink class="nav-link active" href="@(group.Links[0].Href)">@group.Title</NavLink>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown">
+                            <div class="dropdown show">
+                                <a class="nav-link " href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @group.Title
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    @foreach (var link in group.Links)
+                                    {
+                                        <NavLink class="dropdown-item text-dark" href="@link.Href">@link.Label</NavLink>
+                                    }
+                                </div>
+                            </div>
+                        </li>
+                    }
+                }
+                @* <li class="nav-item">
+                    <NavLink class="nav-link active" href="#">User</NavLink>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Link
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <div class="dropdown show">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown link
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <NavLink class="dropdown-item text-dark" href="#">Action</NavLink>
+                            <NavLink class="dropdown-item text-dark" href="#">Another action</NavLink>
+                            <NavLink class="dropdown-item text-dark" href="#">Something else here</NavLink>
+                        </div>
+                    </div>
+                </li> *@
+            </ul>
+        </div>
+    </div>
+</nav>

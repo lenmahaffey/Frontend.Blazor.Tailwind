@@ -1,0 +1,22 @@
+﻿@import '_colors.scss';
+
+$black: map-get($black, 500);
+$orange: map-get($orange, 500);
+$yellow: map-get($yellow, 500);
+$red: map-get($red, 500);
+$lightBlue: map-get($lightBlue, 500);
+$darkBlue: map-get($darkBlue, 500);
+$green: map-get($green, 500);
+$gray: map-get($gray, 500);
+$purple: map-get($purple, 500);
+
+$dark: $black;
+$light: $white;
+$primary: $darkBlue;
+$secondary: $gray;
+$accent1: $orange;
+$accent2: $purple;
+$error: $red;
+$success: $green;
+$warning: $yellow;
+$info: $lightBlue;

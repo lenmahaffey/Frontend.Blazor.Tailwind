@@ -1,0 +1,7 @@
+﻿#alertContainer {
+  max-width: 35%;
+  min-width: 35%;
+  position: absolute;
+  top: 8.5%;
+  z-index: 1000;
+}

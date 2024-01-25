@@ -1,133 +1,6 @@
-﻿/*$mmRed: #F71435; //Imperial Red*/
-/*$mmBlack: #01070e; //Rich Black*/
-/*$mmBlue: #064789; //Polynesian Blue*/
-/*$mmBlue: #009DDC; //Celestial Blue*/
-/*$mmBlue: #064789; //Polynesian Blue*/
-.mm-bg-dark {
-  background-color: #1e1e24;
-}
-
-.mm-bg-gray {
-  background-color: #e6e6e6;
-}
-
-.mm-bg-light {
-  background-color: #e1e9f1;
-}
-
-.mm-bg-success {
-  background-color: #1AAE1A;
-}
-
-.mm-bg-warning {
-  background-color: #DBA507;
-}
-
-.mm-bg-danger {
-  background-color: #DD1130;
-}
-
-.mm-bg-primary {
-  background-color: #0072bb;
-}
-
-.mm-bg-secondary {
-  background-color: #F26430;
-}
-
-.mm-bg-accent {
-  background-color: #5b1144;
-}
-
-.mm-text-dark {
-  color: #1e1e24;
-}
-
-.mm-text-gray {
-  color: #e6e6e6;
-}
-
-.mm-text-light {
-  color: #e1e9f1;
-}
-
-.mm-text-success {
-  color: #1AAE1A;
-}
-
-.mm-text-warning {
-  color: #DBA507;
-}
-
-.mm-text-danger {
-  color: #DD1130;
-}
-
-.mm-text-primary {
-  color: #0072bb;
-}
-
-.mm-text-secondary {
-  color: #F26430;
-}
-
-.mm-text-accent {
-  color: #5b1144;
-}
-
-.mm-border-dark {
-  border-color: #1e1e24;
-}
-
-.mm-border-gray {
-  border-color: #e6e6e6;
-}
-
-.mm-border-light {
-  border-color: #e1e9f1;
-}
-
-.mm-border-success {
-  border-color: #1AAE1A;
-}
-
-.mm-border-warning {
-  border-color: #DBA507;
-}
-
-.mm-border-danger {
-  border-color: #DD1130;
-}
-
-.mm-border-primary {
-  border-color: #0072bb;
-}
-
-.mm-border-secondary {
-  border-color: #F26430;
-}
-
-.mm-border-accent {
-  border-color: #5b1144;
-}
-
-.mm-alert-success {
-  background-color: rgba(26, 174, 26, 0.5);
-}
-
-.mm-alert-warning {
-  background-color: rgba(219, 165, 7, 0.3);
-}
-
-.mm-alert-error {
-  background-color: rgba(221, 17, 48, 0.3);
-  color: #1e1e24;
-}
-
-html, body {
+﻿html, body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   overflow: hidden;
-  background-color: #e1e9f1;
 }
 
 #blazor-error-ui {
@@ -158,4 +31,28 @@ html, body {
   content: "An error has occurred.";
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///C:/Users/mahaf/Documents/sourceCode/MeetingManager/Blazor.Frontend.Bootstrap/Blazor.Frontend.Bootstrap/src/_theme.scss%22,%22file:///C:/Users/mahaf/Documents/sourceCode/MeetingManager/Blazor.Frontend.Bootstrap/Blazor.Frontend.Bootstrap/src/wwwroot/css/app.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AACA;AACA;AACA;AACA;AACA;AAWA;EACI,kBAXM;;;AAcV;EACI,kBARK;;;AAWT;EACI,kBAlBM;;;AAqBV;EACI,kBAjBM;;;AAoBV;EACI,kBAxBO;;;AA2BX;EACI,kBA3BI;;;AA8BR;EACI,kBA9BK;;;AAiCT;EACI,kBArCO;;;AAwCX;EACI,kBAnCO;;;AAsCX;EACI,OA/CM;;;AAkDV;EACI,OA5CK;;;AA+CT;EACI,OAtDM;;;AAyDV;EACI,OArDM;;;AAwDV;EACI,OA5DO;;;AA+DX;EACI,OA/DI;;;AAkER;EACI,OAlEK;;;AAqET;EACI,OAzEO;;;AA4EX;EACI,OAvEO;;;AA2EX;EACI,cApFM;;;AAuFV;EACI,cAjFK;;;AAoFT;EACI,cA3FM;;;AA8FV;EACI,cA1FM;;;AA6FV;EACI,cAjGO;;;AAoGX;EACI,cApGI;;;AAuGR;EACI,cAvGK;;;AA0GT;EACI,cA9GO;;;AAiHX;EACI,cA5GO;;;AA+GX;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA,OAjIM;;;ACJV;EACI;EACA;EACA,kBDEM;;;ACCV;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI%22%7D */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #F8F9FA;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #424649;
+}
+
+/* Handle on hover*/
+::-webkit-scrollbar-thumb:hover {
+  background: #646669;
+}
+
+.btn {
+  box-shadow: 0px 1px 5px 1px #909294 !important;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///C:/Users/mahaf/Documents/sourceCode/Blazor.Frontend/Blazor.Frontend/src/Styles/app.scss%22,%22file:///C:/Users/mahaf/Documents/sourceCode/Blazor.Frontend/Blazor.Frontend/src/Styles/_colors.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAEA;EACI;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAIJ;AACA;EACI;;;AAGJ;AACA;EACI,YC3CI;;;AD8CR;AACA;EACI;;;AAGJ;AACA;EACI;;;AAGJ;EACI%22%7D */

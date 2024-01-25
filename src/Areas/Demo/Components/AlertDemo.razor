@@ -1,0 +1,52 @@
+﻿<EditForm Model="@AlertMessage" OnValidSubmit="@SendAlert" class="row">
+    <DataAnnotationsValidator />
+    <div class="row">
+        <InputSelect id="alertMessageTypeSelect" @bind-Value="@AlertMessage.Type" class="form-select">
+            @foreach (var messageType in Enum.GetValues(typeof(MessageType)))
+            {
+                <option value="@messageType">@messageType</option>
+            }
+        </InputSelect>
+        <label for="alertMessageTypeSelect" class="form-label ps-2">Type</label>
+    </div>
+
+    <div class="row">
+        <InputText id="messageTextInput" @bind-Value="@AlertMessage.Text" class="form-control"></InputText>
+        <div class="col-1">
+            <label for="messageTextInput" class="form-label ps-2">Text</label>
+        </div>
+        <div class="col">
+            <ValidationMessage class="text-danger text-end" For="@(() => AlertMessage.Text)" />
+        </div>
+    </div>
+    <div class="row">
+        <InputRadioGroup @bind-Value="@AlertMessage.AutoDismiss">
+            <div class="row text-center">
+                <div class="col-5 m-0 p-0">
+                    <p>Auto-dismiss:</p>
+                </div>
+                <div class="col-3 me-3">
+                    <div>
+                        <InputRadio Value="true" />Yes<br />
+                    </div>
+                </div>
+                <div class="col-3">
+                    <InputRadio Value="false" />No<br />
+                </div>
+            </div>
+        </InputRadioGroup>
+        <div class="col-1">
+            <label for="messageTextInput" class="form-label ps-2"></label>
+        </div>
+        <div class="col text-end">
+            <ValidationMessage class="text-danger" For="@(() => AlertMessage.AutoDismiss)" />
+        </div>
+    </div>
+    <div class="text-center row d-flex m-0 p-0 align-content-end">
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Open Alert Demo
+            </button>
+        </div>
+    </div>
+</EditForm>

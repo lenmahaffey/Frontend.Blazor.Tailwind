@@ -1,0 +1,26 @@
+﻿<div id="leftSideBarContainer" class="row align-items-center justify-content-center me-3">
+    <div class="h-100 w-100 bg-primary text-light">
+        <div class="sidenav mt-4">
+            @foreach (var group in Links)
+            {
+                if (group.Links.Count == 1)
+                {
+                    <a href="@group.Links[0].Href" class="">@group.Title</a>
+                }
+                else
+                {
+                    <button class="dropdown-btn">
+                        @group.Title
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-container">
+                        @foreach (var link in group.Links)
+                        {
+                            <a href="@link.Href" class="ms-3">@link.Label</a>
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

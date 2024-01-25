@@ -1,19 +1,25 @@
 ﻿using Blazor.Frontend.Bootstrap.Classes;
+using Microsoft.AspNetCore.Components;
 
 namespace Blazor.Frontend.Bootstrap.Services
 {
     public class AlertService
     {
-        public EventHandler<Message>? AlertReceived;
-
-        public void SendMessage(Message message)
+        [Inject] private ILogger<AlertService> logger { get; set; }
+        public EventHandler<Message>? MessageReceived;
+        public EventHandler<Message>? AlertDeleted;
+        public AlertService(ILogger<AlertService> logger)
         {
-            OnAlertReceived(message);
+            this.logger = logger;
+        }
+        public void SendAlert(Message message)
+        {
+            MessageReceived?.Invoke(this, message);
         }
 
-        protected virtual void OnAlertReceived(Message message)
+        public void DeleteAlert(Message message)
         {
-            AlertReceived?.Invoke(this, message);
+            AlertDeleted?.Invoke(this, message);
         }
     }
 }

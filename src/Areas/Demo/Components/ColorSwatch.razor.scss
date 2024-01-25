@@ -1,0 +1,10 @@
+@import "../../../Styles/_colors.scss";
+.colorSwatch {
+    box-shadow: 0px 1px 5px 1px map-get($black, 200) !important;
+    height: 200px;
+    border-radius: 50px;
+}
+
+.swatch {
+    border-radius: 50px;
+}

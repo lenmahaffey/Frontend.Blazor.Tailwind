@@ -1,58 +1,62 @@
 ﻿[
   {
-    "outputFile": "wwwroot/css/theme.css",
-    "inputFile": "_theme.scss"
+    "outputFile": "wwwroot/css/bootstrap.css",
+    "inputFile": "Styles/bootstrap.scss"
   },
   {
     "outputFile": "wwwroot/css/app.css",
-    "inputFile": "wwwroot/css/app.scss"
+    "inputFile": "Styles/app.scss"
   },
   {
-    "outputFile": "Shared/NavMenu.razor.css",
-    "inputFile": "Shared/NavMenu.razor.scss"
+    "outputFile": "Areas/Demo/Components/ColorSwatchDemo.razor.css",
+    "inputFile": "Areas/Demo/Components/ColorSwatchDemo.razor.scss"
   },
   {
-    "outputFile": "Shared/MainLayout.razor.css",
-    "inputFile": "Shared/MainLayout.razor.scss"
+    "outputFile": "Areas/Demo/Components/ConfirmationDialogDemo.razor.css",
+    "inputFile": "Areas/Demo/Components/ConfirmationDialogDemo.razor.scss"
   },
   {
-    "outputFile": "Shared/Footer.razor.css",
-    "inputFile": "Shared/Footer.razor.scss"
+    "outputFile": "Areas/Demo/Demo.razor.css",
+    "inputFile": "Areas/Demo/Demo.razor.scss"
   },
   {
-    "outputFile": "Shared/LeftSideBar.razor.css",
-    "inputFile": "Shared/LeftSideBar.razor.scss"
+    "outputFile": "Layout/Components/Alert.razor.css",
+    "inputFile": "Layout/Components/Alert.razor.scss"
   },
   {
-    "outputFile": "Shared/RightSideBar.razor.css",
-    "inputFile": "Shared/RightSideBar.razor.scss"
+    "outputFile": "Layout/Components/AlertContainer.razor.css",
+    "inputFile": "Layout/Components/AlertContainer.razor.scss"
   },
   {
-    "outputFile": "Components/ConfirmationDialog.razor.css",
-    "inputFile": "Components/ConfirmationDialog.razor.scss"
+    "outputFile": "Layout/Components/Footer.razor.css",
+    "inputFile": "Layout/Components/Footer.razor.scss"
   },
   {
-    "outputFile": "Pages/Index.razor.css",
-    "inputFile": "Pages/Index.razor.scss"
+    "outputFile": "Layout/Components/NavBar.razor.css",
+    "inputFile": "Layout/Components/NavBar.razor.scss"
   },
   {
-    "outputFile": "Components/ColorSwatches.razor.css",
-    "inputFile": "Components/ColorSwatches.razor.scss"
+    "outputFile": "Layout/Components/Notification.razor.css",
+    "inputFile": "Layout/Components/Notification.razor.scss"
   },
   {
-    "outputFile": "Components/Alert.razor.css",
-    "inputFile": "Components/Alert.razor.scss"
+    "outputFile": "Layout/Components/NotificationContainer.razor.css",
+    "inputFile": "Layout/Components/NotificationContainer.razor.scss"
   },
   {
-    "outputFile": "Shared/NotificationContainer.razor.css",
-    "inputFile": "Shared/NotificationContainer.razor.scss"
+    "outputFile": "Layout/Components/RightSideBar.razor.css",
+    "inputFile": "Layout/Components/RightSideBar.razor.scss"
   },
   {
-    "outputFile": "Components/Notification.razor.css",
-    "inputFile": "Components/Notification.razor.scss"
+    "outputFile": "Layout/Components/SpinnerDialog.razor.css",
+    "inputFile": "Layout/Components/SpinnerDialog.razor.scss"
   },
   {
-    "outputFile": "Shared/AlertContainer.razor.css",
-    "inputFile": "Shared/AlertContainer.razor.scss"
+    "outputFile": "Layout/Components/ToolTip.razor.css",
+    "inputFile": "Layout/Components/ToolTip.razor.scss"
+  },
+  {
+    "outputFile": "Layout/MainLayout.razor.css",
+    "inputFile": "Layout/MainLayout.razor.scss"
   }
 ]

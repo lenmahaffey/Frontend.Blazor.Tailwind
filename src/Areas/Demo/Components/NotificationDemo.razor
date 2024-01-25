@@ -1,0 +1,39 @@
+﻿<EditForm Model="@NotificationMessage" OnValidSubmit="@SendNotification" class="row">
+    <DataAnnotationsValidator />
+    <div class="row">
+        <InputSelect id="notificationMessageTypeSelect" @bind-Value="@NotificationMessage.Type" class="form-select">
+            @foreach (var messageType in Enum.GetValues(typeof(MessageType)))
+            {
+                <option value="@messageType">@messageType</option>
+            }
+        </InputSelect>
+        <label for="notificationMessageTypeSelect" class="form-label ps-2">Type</label>
+    </div>
+
+    <div class="row">
+        <InputText id="notificationMessageTitleInput" @bind-Value="@NotificationMessage.Title" class="form-control"></InputText>
+        <div class="col-1">
+            <label for="notificationMessageTitleInput" class="form-label ps-2 col">Title</label>
+        </div>
+        <div class="col text-danger text-end">
+            <ValidationMessage For="@(() => NotificationMessage.Title)" />
+        </div>
+    </div>
+
+    <div class="row">
+        <InputText id="notificationMessageTextInput" @bind-Value="@NotificationMessage.Text" class="form-control"></InputText>
+        <div class="col-1">
+            <label for="messageTextInput" class="form-label ps-2">Text</label>
+        </div>
+        <div class="col text-danger text-end">
+            <ValidationMessage class="text-danger" For="@(() => NotificationMessage.Text)" />
+        </div>
+    </div>
+    <div class="text-center row d-flex m-0 p-0 align-content-end">
+        <div>
+            <button type="submit" class="btn btn-primary">
+                Open Notification Demo
+            </button>
+        </div>
+    </div>
+</EditForm>

@@ -1,0 +1,6 @@
+﻿<div id="@(Id)" class="@(AnimationClass)">
+    <div class="alert alert-dismissible @(SetBackgroundColor())" role="alert">
+        @Message.Text
+        <button type="button" class="btn-close" @onclick="hideMessage" aria-label="Close"></button>
+    </div>
+</div>

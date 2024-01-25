@@ -1,0 +1,10 @@
+﻿<div id="notificationContainer">
+    <div class="toast-container ps-2 pe-2">
+        <div id="notifications" class="row align-content-start justify-content-start flex-column-reverse">
+        @foreach (var message in Notifications)
+        {
+            <Notification Message="message"></Notification>
+        }
+        </div>
+    </div>
+</div>

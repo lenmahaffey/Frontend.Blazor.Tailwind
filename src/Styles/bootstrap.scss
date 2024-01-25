@@ -1,0 +1,15 @@
+
+@import "../wwwroot/lib/bootstrap/scss/functions";
+@import "../wwwroot/lib/bootstrap/scss/variables";
+
+$primary: #1b3b6f;
+$accent1: #F26430;
+$accent2: #6f1b65;
+$theme-colors: map-merge(
+    $theme-colors, ( 
+    "primary": $primary, 
+    "accent1": $accent1,
+    "accent2": $accent2
+));
+
+@import "../wwwroot/lib/bootstrap/scss/bootstrap.scss";

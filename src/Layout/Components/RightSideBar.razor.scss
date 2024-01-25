@@ -1,0 +1,27 @@
+﻿@import '../../Styles/_theme.scss';
+
+#sideBarContainer {
+    height: 100%;
+    transform: translateX(262px);
+    opacity: 1;
+    transition: transform .5s, opacity .5s;
+}
+
+#sideBarContainer.active {
+    transform: translateX(-10px);
+    opacity: 1;
+}
+
+#rightSideBar {
+    background-color: $white;
+    height: 90%;
+    border-radius: 5px;
+}
+
+#toggleButton {
+    cursor: pointer;
+    margin: -10px;
+    display: inline-block;
+    border-radius: 100%;
+    opacity: 1;
+}

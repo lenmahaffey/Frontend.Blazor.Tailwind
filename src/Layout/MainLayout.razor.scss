@@ -1,0 +1,40 @@
+﻿@import '../Styles/_colors.scss';
+#mainContainer {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#headerContainer {
+    display: flex;
+    flex-direction: row;
+    height: 7%;
+}
+
+#footerContainer {
+    display: flex;
+    flex-direction: row;
+    height: 7%;
+}
+
+#centerContainer {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    overflow: hidden;
+}
+
+#leftContainer {
+    flex: 1;
+}
+
+#bodyContainer {
+    flex: 5;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#rightContainer {
+    flex: 1;
+}

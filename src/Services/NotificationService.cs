@@ -1,19 +1,25 @@
 ﻿using Blazor.Frontend.Bootstrap.Classes;
+using Microsoft.AspNetCore.Components;
 
 namespace Blazor.Frontend.Bootstrap.Services
 {
     public class NotificationService
     {
+        [Inject] private ILogger<NotificationService> logger { get; set; }
         public EventHandler<Message>? MessageReceived;
-
-        public void SendMessage(Message message)
+        public EventHandler<Message>? NotificationDeleted;
+        public NotificationService(ILogger<NotificationService> logger)
         {
-            OnMessageReceived(message);
+            this.logger = logger;
         }
-
-        protected virtual void OnMessageReceived(Message message)
+        public void SendNotification(Message message)
         {
             MessageReceived?.Invoke(this, message);
+        }
+
+        public void DeleteNotification(Message message)
+        {
+            NotificationDeleted?.Invoke(this, message);
         }
     }
 }

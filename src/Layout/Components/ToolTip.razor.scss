@@ -1,0 +1,8 @@
+@import '../../Styles/_colors.scss';
+
+#toolTip {
+    background-color: rgb(map-get($black, 900), .9);
+    position: absolute;
+    z-index: 1000;
+    border-radius: 5px;
+}

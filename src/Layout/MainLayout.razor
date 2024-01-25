@@ -1,0 +1,31 @@
+﻿@inherits LayoutComponentBase
+<div id="mainContainer" class="bg-light vh-100">
+    <div id="headerContainer" class="bg-accent1">
+        <header class="row w-100 p-0 m-0">
+            <NavBar></NavBar>
+        </header>
+    </div>
+    <AlertContainer></AlertContainer>
+    <NotificationContainer></NotificationContainer>
+    <div id="centerContainer" class="">
+        <div id="leftContainer" class="">
+            <LeftSideBar></LeftSideBar>
+        </div>
+        <div id="bodyContainer" class="mt-2 mb-4 me-3">
+            @Body
+        </div>
+        <div id="rightContainer" class="">
+            <RightSideBar></RightSideBar>
+        </div>
+    </div>
+    <div id="footerContainer" class="bg-secondary">
+        <footer class="row w-100 p-0 m-0">
+            <Footer></Footer>
+        </footer>
+    </div>
+</div>
+
+<ToolTip></ToolTip>
+@* Modals *@
+<ConfirmationDialog></ConfirmationDialog>
+<SpinnerDialog></SpinnerDialog>

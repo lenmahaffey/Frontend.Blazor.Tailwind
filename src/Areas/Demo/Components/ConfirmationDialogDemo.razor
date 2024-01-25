@@ -1,0 +1,87 @@
+﻿<div class="row ms-3">
+    @if(!hasRun)
+    {
+        <EditForm Model="@options" OnValidSubmit="@OpenConfirmationDialog" class="row">
+            <DataAnnotationsValidator />
+
+            <div class="row p-0 m-0 ">
+                <InputText id="confirmationTitleInput" @bind-Value="@options.Title" class="form-control"></InputText>
+                <div class="col-1">
+                    <label for="confirmationTitleInput" class="form-label">Title</label>
+                </div>
+                <div class="col">
+                    <ValidationMessage class="text-danger text-end" For="@(() => options.Title)" />
+                </div>
+            </div>
+
+            <div class="row p-0 m-0">
+                <InputText id="messageTextInput" @bind-Value="@options.Message" class="form-control"></InputText>
+                <div class="col-1">
+                    <label for="messageTextInput" class="form-label ps-2">
+                        Text
+                    </label>
+                </div>
+                <div class="col">
+                    <ValidationMessage class="text-danger text-end" For="@(() => options.Message)" />
+                </div>
+            </div>
+
+            <div class="row p-0 m-0">
+                <div class="col ps-0">
+                    <InputText id="okButtonTextInput" @bind-Value="@options.OkButtonText" class="form-control"></InputText>
+                    <div class="col text-start">
+                        <label for="okButtonTextInput" class="form-label ps-2">
+                            Ok Text
+                        </label>
+                        <ValidationMessage class="text-danger text-end" For="@(() => options.OkButtonText)" />
+                    </div>
+                </div>
+                <div class="col p-0 m-0">
+                    <InputText id="cancelButtonTextInput" @bind-Value="@options.CancelButtonText" class="form-control"></InputText>
+                    <div class="col text-start">
+                        <label for="cancelButtonTextInput" class="form-label ps-2">
+                            Cancel Text
+                        </label>
+                        <ValidationMessage class="text-danger text-end" For="@(() => options.OkButtonText)" />
+                    </div>
+                </div>
+            </div>
+            <div class="text-center row d-flex m-0 p-0 align-content-end">
+                <div>
+                    <button type="submit" class="btn btn-primary">
+                        Open Confirmation Demo
+                    </button>
+                </div>
+            </div>
+        </EditForm>
+    }
+    else
+    {
+        <div class="row text-center">
+            @if (ConfirmationDialogResponse != null)
+            {
+                <p>You selected @ConfirmationDialogResponse</p>
+                if (ConfirmationDialogResponse == true)
+                {
+                    <i class="fa-regular fa-circle-check text-success"></i>
+                }
+                else
+                {
+                    <i class="fa-regular fa-circle-xmark text-danger"></i>
+                }
+            }
+            else
+            {
+                <p>You did not make a selection</p>
+                <i class="fa-regular fa-circle-question text-warning"></i>
+            }
+            <div class="text-center row d-flex m-0 p-0 align-content-end">
+                <div>
+                    <button @onclick="reset" class="btn btn-primary">
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+    </div>

@@ -1,0 +1,55 @@
+﻿@import '../../Styles/_theme.scss';
+
+@keyframes slideInDown {
+    0% {
+        transform: translateY(-20%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+
+    100% {
+        transform:  translateX(100%);
+        opacity: 0;
+        display: none;
+    }
+}
+
+.toast {
+    width: 100%;
+}
+
+.hidden{
+    opacity: 0;
+    display: none;
+}
+
+.slideInDown {
+    animation-name: slideInDown;
+    animation-duration: .75s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+.slideOutRight {
+    animation-name: slideOutRight;
+    animation-duration: .75s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
