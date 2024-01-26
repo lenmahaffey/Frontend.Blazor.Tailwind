@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "MeetingManager_Frontend": {
+    "Blazor.Frontend.Bootstrap": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

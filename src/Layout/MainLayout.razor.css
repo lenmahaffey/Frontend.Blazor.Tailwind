@@ -37,3 +37,53 @@
 #rightContainer {
   flex: 1;
 }
+
+.borderText {
+  margin-top: -23px;
+  text-align: center;
+  color: aliceblue;
+}
+
+#envBorder {
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.dev {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 20px solid rgba(61, 88, 133, 0.5);
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.qa {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 20px solid rgba(60, 153, 110, 0.5);
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.stage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 20px solid rgba(225, 83, 97, 0.5);
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+}
