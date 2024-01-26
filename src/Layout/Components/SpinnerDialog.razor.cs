@@ -5,57 +5,65 @@ using Microsoft.JSInterop;
 
 namespace Blazor.Frontend.Bootstrap.Layout.Components
 {
-    public partial class SpinnerDialog
+    public partial class SpinnerDialog : IDisposable
     {
-        [Inject] public IJSRuntime? Js { get; set; }
-        [Inject] AppStateService? AppStateService { get; set; }
-        public string Id { get; set; } = "spinner";
-        public string Message { get; set; } = "Message goes here";
-        public bool IsStatic { get; set; } = true;
-        private IJSObjectReference? _js;
-        private ElementReference? spinnerDialog;
-        public SpinnerDialogOptions SpinnerDialogOptions { get; set; } = new SpinnerDialogOptions();
+        [Inject] IJSRuntime? jsRuntime { get; set; }
+        [Inject] AppStateService? appStateService { get; set; }
+        string id { get; set; } = "spinner";
+        string message { get; set; } = "Message goes here";
+        IJSObjectReference? js { get; set; }
+        ElementReference? spinnerDialog { get; set; }
+        SpinnerDialogOptions options { get; set; } = new SpinnerDialogOptions();
         protected async override Task OnInitializedAsync()
         {
-            if (Js != null)
+            if (jsRuntime != null)
             {
-                _js = await Js.InvokeAsync<IJSObjectReference>("import", "./Layout/Components/SpinnerDialog.razor.js");
+                js = await jsRuntime.InvokeAsync<IJSObjectReference>("import", "./Layout/Components/SpinnerDialog.razor.js");
             }
         }
 
         protected override void OnParametersSet()
         {
             base.OnParametersSet();
-            if (AppStateService != null)
+            if (appStateService != null)
             {
-                AppStateService.SpinnerDialogOptions += OnSpinnerDialogOptionsReceived;
-                AppStateService.CloseSpinner += OnCloseSpinnerReceived;
-                AppStateService.SpinnerMessage += onSpinnerMessageReceived;
+                appStateService.SpinnerDialogOptions += onSpinnerDialogOptionsReceived;
+                appStateService.CloseSpinner += onCloseSpinnerReceived;
+                appStateService.SpinnerMessage += onSpinnerMessageReceived;
             }
         }
         void onSpinnerMessageReceived(object? sender, string message)
         {
-            Message = message;
+            this.message = message;
             StateHasChanged();
         }
 
-        public void OnSpinnerDialogOptionsReceived(object? sender, SpinnerDialogOptions options)
+        void onSpinnerDialogOptionsReceived(object? sender, SpinnerDialogOptions options)
         {
-            SpinnerDialogOptions = options;
-            Message = SpinnerDialogOptions.Message;
+            this.options = options;
+            message = this.options.Message;
             StateHasChanged();
-            _js!.InvokeVoidAsync("setAttributes", spinnerDialog, options.IsStatic, DotNetObjectReference.Create(this));
+            js!.InvokeVoidAsync("setAttributes", spinnerDialog, options.IsStatic, DotNetObjectReference.Create(this));
+        }
+
+        void onCloseSpinnerReceived(object? sender, bool shouldClose)
+        {
+            js!.InvokeVoidAsync("closeSpinner", spinnerDialog);
         }
 
         [JSInvokable]
         public void OpenSpinner()
         {
-            _js!.InvokeVoidAsync("openSpinner", spinnerDialog);
+            js!.InvokeVoidAsync("openSpinner", spinnerDialog);
         }
-
-        public void OnCloseSpinnerReceived(object? sender, bool shouldClose)
+        public void Dispose()
         {
-            _js!.InvokeVoidAsync("closeSpinner", spinnerDialog);
+            if (appStateService != null)
+            {
+                appStateService.SpinnerDialogOptions -= onSpinnerDialogOptionsReceived;
+                appStateService.CloseSpinner -= onCloseSpinnerReceived;
+                appStateService.SpinnerMessage -= onSpinnerMessageReceived;
+            }
         }
     }
 }

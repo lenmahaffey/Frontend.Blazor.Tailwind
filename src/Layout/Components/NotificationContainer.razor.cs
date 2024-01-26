@@ -6,30 +6,35 @@ namespace Blazor.Frontend.Bootstrap.Layout.Components
 {
     public partial class NotificationContainer : IDisposable
     {
-        [Inject] private NotificationService? notificationService { get; set; }
+        [Inject] NotificationService? notificationService { get; set; }
         [Parameter] public List<Message> Notifications { get; set; } = new List<Message>();
 
         protected override void OnInitialized()
         {
-            notificationService!.MessageReceived += OnMessageReceived;
-            notificationService!.NotificationDeleted += OnNotificationDeleted;
+            notificationService!.MessageReceived += onMessageReceived;
+            notificationService!.NotificationDeleted += onNotificationDeleted;
             base.OnInitialized();
         }
 
-        public void OnMessageReceived(object? sender, Message m)
+        void onMessageReceived(object? sender, Message m)
         {
             Notifications.Add(m);
             StateHasChanged();
         }
 
-        public void OnNotificationDeleted(object? sender, Message message)
+        void onNotificationDeleted(object? sender, Message message)
         {
             Notifications.Remove(message);
             StateHasChanged();
         }
         public void Dispose()
         {
-            notificationService!.MessageReceived -= OnMessageReceived;
+            if (notificationService != null)
+            {
+                notificationService.MessageReceived -= onMessageReceived;
+                notificationService.NotificationDeleted -= onNotificationDeleted;
+
+            }
         }
     }
 }

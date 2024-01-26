@@ -6,20 +6,19 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo
 {
     public partial class Demo
     {
-        [Inject] ILogger<Demo>? logger { get; set; }
         [Inject] AppStateService? appStateService { get; set; }
-        public List<NavLinkGroup> NavLinks { get; set; } = DemoSideNavLinks.Links;
+        List<NavLinkGroup> navLinks { get; set; } = DemoSideNavLinks.Links;
         protected override void OnParametersSet()
         {
             base.OnParametersSet();
-            SetNavLinks();
+            setNavLinks();
         }
 
-        public void SetNavLinks()
+        void setNavLinks()
         {
             if (appStateService != null)
             {
-                appStateService.SetSideNavLinks(NavLinks);
+                appStateService.SideNavLinks?.Invoke(this, navLinks);
             }
         }
     }

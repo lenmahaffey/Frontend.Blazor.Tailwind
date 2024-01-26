@@ -19,10 +19,8 @@ namespace Blazor.Frontend.Bootstrap.Classes
         [Range(1, 10, ErrorMessage = "Invalid")]
         [RegularExpression(@"^\d*\.?\d{1,2}$", ErrorMessage = "Too Long")]
         public double DisplayTime { get; set; } = 3;
-
         public DateTime Time { get; set; } = DateTime.Now;
         public bool AutoDismiss { get; set; } = true;
-
         public bool IsVisible { get; set; } = true;
     }
 }

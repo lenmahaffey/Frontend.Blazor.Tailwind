@@ -8,11 +8,11 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
     {
         [Inject] AppStateService? appStateService { get; set; }
         public Message AlertMessage { get; set; } = new Message();
-        ElementReference Type { get; set; }
-        ElementReference Text { get; set; }
-        ElementReference AutoDismiss { get; set; }
-        ElementReference Time { get; set; }
-        public void SendAlert()
+        ElementReference type { get; set; }
+        ElementReference text { get; set; }
+        ElementReference autoDismiss { get; set; }
+        ElementReference time { get; set; }
+        void sendAlert()
         {
             if (appStateService != null)
             {
@@ -21,12 +21,12 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
                 AlertMessage = new Message(); //Reset the input
             }
         }
-        void OpenToolTip(ElementReference element, string text)
+        void openToolTip(ElementReference element, string text)
         {
             if (appStateService != null)
             {
                 var options = new ToolTipOptions() { Element = element, Text = text };
-                appStateService.OpenToolTip(options);
+                appStateService.ToolTipOptions?.Invoke(this, options);
             }
         }
     }

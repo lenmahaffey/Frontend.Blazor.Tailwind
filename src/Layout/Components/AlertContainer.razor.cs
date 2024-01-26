@@ -7,29 +7,33 @@ namespace Blazor.Frontend.Bootstrap.Layout.Components
     public partial class AlertContainer : IDisposable
     {
         [Inject] AlertService? alertService { get; set; }
-        public List<Message> Alerts { get; set; } = new List<Message>();
+        List<Message> alerts { get; set; } = new List<Message>();
         protected override void OnInitialized()
         {
-            alertService!.MessageReceived += OnAlertReceived;
-            alertService!.AlertDeleted += OnAlertDeleted;
+            alertService!.MessageReceived += onAlertReceived;
+            alertService!.AlertDeleted += onAlertDeleted;
             base.OnInitialized();
         }
 
-        public void OnAlertReceived(object? sender, Message message)
+        void onAlertReceived(object? sender, Message message)
         {
-            Alerts.Add(message);
+            alerts.Add(message);
             StateHasChanged();
         }
 
-        public void OnAlertDeleted(object? sender, Message message)
+        void onAlertDeleted(object? sender, Message message)
         {
-            Alerts.Remove(message);
+            alerts.Remove(message);
             StateHasChanged();
         }
 
         public void Dispose()
         {
-            alertService!.MessageReceived -= OnAlertReceived;
+            if (alertService != null)
+            {
+                alertService.MessageReceived -= onAlertReceived;
+                alertService.AlertDeleted -= onAlertDeleted;
+            }
         }
     }
 }

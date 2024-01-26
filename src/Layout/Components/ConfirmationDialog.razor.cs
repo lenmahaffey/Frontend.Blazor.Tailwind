@@ -8,16 +8,15 @@ namespace Blazor.Frontend.Bootstrap.Layout.Components
 {
     public partial class ConfirmationDialog
     {
-        [Inject] public AppStateService? AppStateService { get; set; }
-        [Inject] public IJSRuntime? Js { get; set; }
+        [Inject] AppStateService? appStateService { get; set; }
+        [Inject] IJSRuntime? jsRuntime { get; set; }
         [Parameter] public bool DisableEscape { get; set; } = true;
-        private ElementReference? toggleButton { get; set; }
-        public string Id { get; set; } = "confirm";
-        public ConfirmationDialogOptions ConfirmationDialogOptions { get; set; } = new ConfirmationDialogOptions();
-
-        private IJSObjectReference? _js;
-        private bool? response { get; set; }
-        private Dictionary<string, object> attributes = new Dictionary<string, object> { { "data-bs-backdrop", "static" }, { "data-bs-keyboard", "false" } };
+        string id { get; set; } = "confirm";
+        bool? response { get; set; }
+        ConfirmationDialogOptions confirmationDialogOptions { get; set; } = new ConfirmationDialogOptions();
+        Dictionary<string, object> attributes { get; set; } = new Dictionary<string, object> { { "data-bs-backdrop", "static" }, { "data-bs-keyboard", "false" } };
+        ElementReference? toggleButton { get; set; }
+        IJSObjectReference? js { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -25,43 +24,43 @@ namespace Blazor.Frontend.Bootstrap.Layout.Components
             {
                 attributes.Clear();
             }
-            _js = await Js!.InvokeAsync<IJSObjectReference>("import", "./Layout/Components/ConfirmationDialog.razor.js");
-            AppStateService!.ConfirmationDialogOptions += OnConfirmationDialogOptionsReceived;
+            js = await jsRuntime!.InvokeAsync<IJSObjectReference>("import", "./Layout/Components/ConfirmationDialog.razor.js");
+            appStateService!.ConfirmationDialogOptions += onConfirmationDialogOptionsReceived;
             await base.OnInitializedAsync();
         }
-        public void OnConfirmationDialogOptionsReceived(object? sender, ConfirmationDialogOptions options)
+        void onConfirmationDialogOptionsReceived(object? sender, ConfirmationDialogOptions options)
         {
-            ConfirmationDialogOptions = options;
+            confirmationDialogOptions = options;
             StateHasChanged();
-            OpenModal();
+            openModal();
         }
-        public void OpenModal()
+        void openModal()
         {
-            _js!.InvokeVoidAsync("ToggleModal", toggleButton);
+            js!.InvokeVoidAsync("ToggleModal", toggleButton);
         }
 
-        public void CloseModal()
+        void closeModal()
         {
-            AppStateService!.ConfirmationResponse!.Invoke(this, response);
-            _js!.InvokeVoidAsync("ToggleModal", toggleButton);
+            appStateService!.ConfirmationResponse!.Invoke(this, response);
+            js!.InvokeVoidAsync("ToggleModal", toggleButton);
         }
 
-        private void cancel()
+        void cancel()
         {
             response = false;
-            CloseModal();
+            closeModal();
         }
-        private void ok()
+        void ok()
         {
             response = true;
-            CloseModal();
+            closeModal();
         }
-        private void dismiss()
+        void dismiss()
         {
             response = null;
-            CloseModal();
+            closeModal();
         }
-        private void onKeyDown(KeyboardEventArgs e)
+        void onKeyDown(KeyboardEventArgs e)
         {
             if (e.Key == "Escape")
             {

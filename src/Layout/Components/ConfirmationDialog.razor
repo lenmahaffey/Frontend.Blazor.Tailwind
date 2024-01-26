@@ -1,17 +1,17 @@
-﻿<div @attributes="attributes" @onkeydown="onKeyDown" class="modal fade hide" role="dialog" id="@Id" tabindex="-1">
+﻿<div @attributes="attributes" @onkeydown="onKeyDown" role="dialog" id="@id" tabindex="-1" class="modal fade hide">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">@ConfirmationDialogOptions.Title</h5>
+        <h5 id="exampleModalLabel" class="modal-title">@confirmationDialogOptions.Title</h5>
         <button type="button" @onclick="dismiss" class="btn-close" aria-label="Close"></button>
-        <button id="confirmClose" type="button" class="btn-close" data-bs-dismiss="modal" hidden></button>
+        <button id="confirmClose" type="button" data-bs-dismiss="modal" class="btn-close" hidden></button>
       </div>
       <div class="modal-body">
-        @ConfirmationDialogOptions.Message
+        @confirmationDialogOptions.Message
       </div>
       <div class="modal-footer">
-        <button type="button" @onclick="cancel" class="btn btn-danger">@ConfirmationDialogOptions.CancelButtonText</button>
-        <button type="button" @onclick="ok" class="btn btn-primary">@ConfirmationDialogOptions.OkButtonText</button>
+        <button type="button" @onclick="cancel" class="btn btn-danger">@confirmationDialogOptions.CancelButtonText</button>
+        <button type="button" @onclick="ok" class="btn btn-primary">@confirmationDialogOptions.OkButtonText</button>
       </div>
     </div>
   </div>

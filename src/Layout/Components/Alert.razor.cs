@@ -7,18 +7,17 @@ namespace Blazor.Frontend.Bootstrap.Layout.Components
 {
     public partial class Alert
     {
-        [Inject] public IJSRuntime? Js { get; set; }
-        [Inject] private AlertService? alertService { get; set; }
+        [Inject] IJSRuntime? jsRuntime { get; set; }
+        [Inject] AlertService? alertService { get; set; }
         [Parameter] public string Id { get; set; } = "alert_" + Guid.NewGuid().ToString("N");
         [Parameter] public Message Message { get; set; } = new Message();
-        public string AnimationClass { get; set; } = "hidden";
-
-        private IJSObjectReference? _js;
+        string animationClass { get; set; } = "hidden";
+        IJSObjectReference? js { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            _js = await Js!.InvokeAsync<IJSObjectReference>("import", "./Layout/Components/Alert.razor.js");
-            await _js.InvokeVoidAsync("listenToAnimationEnd", Id, DotNetObjectReference.Create(this));
+            js = await jsRuntime!.InvokeAsync<IJSObjectReference>("import", "./Layout/Components/Alert.razor.js");
+            await js.InvokeVoidAsync("listenToAnimationEnd", Id, DotNetObjectReference.Create(this));
         }
 
         protected async override Task OnAfterRenderAsync(bool firstRender)
@@ -26,35 +25,29 @@ namespace Blazor.Frontend.Bootstrap.Layout.Components
             await base.OnAfterRenderAsync(firstRender);
             if (firstRender)
             {
-                AnimationClass = Message.IsVisible ? "fadeIn" : "hidden";
+                animationClass = Message.IsVisible ? "fadeIn" : "hidden";
             }
             else
             {
-                AnimationClass = Message.IsVisible ? "visible" : "hidden";
+                animationClass = Message.IsVisible ? "visible" : "hidden";
             }
             if (Message.AutoDismiss)
             {
-                await Wait(Message.DisplayTime);
+                await wait(Message.DisplayTime);
                 hideMessage();
             }
         }
-        async Task Wait(double seconds)
+        async Task wait(double seconds)
         {
             await Task.Delay((int)(seconds * 1000));
         }
-        private void hideMessage()
+        void hideMessage()
         {
-            AnimationClass = "fadeOut";
+            animationClass = "fadeOut";
             StateHasChanged();
         }
 
-        [JSInvokable("DeleteAlert")]
-        public void DeleteAlert()
-        {
-            alertService?.DeleteAlert(Message);
-        }
-
-        private string SetBackgroundColor()
+        private string getBackgroundClass()
         {
             switch (Message?.Type)
             {
@@ -67,6 +60,12 @@ namespace Blazor.Frontend.Bootstrap.Layout.Components
                 default:
                     return "";
             }
+        }
+
+        [JSInvokable("DeleteAlert")]
+        public void DeleteAlert()
+        {
+            alertService?.DeleteAlert(Message);
         }
     }
 }

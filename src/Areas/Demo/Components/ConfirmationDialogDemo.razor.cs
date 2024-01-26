@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Components;
 
 namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
 {
-    public partial class ConfirmationDialogDemo
+    public partial class ConfirmationDialogDemo : IDisposable
     {
         [Inject] AppStateService? appStateService { get; set; }
-        public bool? ConfirmationDialogResponse { get; set; }
-        public ConfirmationDialogOptions Options { get; set; } = new ConfirmationDialogOptions();
+        bool? confirmationDialogResponse { get; set; }
+        ConfirmationDialogOptions options { get; set; } = new ConfirmationDialogOptions();
         bool hasRun { get; set; } = false;
         ElementReference title { get; set; }
         ElementReference text { get; set; }
@@ -23,15 +23,16 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
                 appStateService.ConfirmationResponse += onConfirmationResponseReceived;
             }
         }
+        void openConfirmationDialog()
+        {
+            appStateService?.ConfirmationDialogOptions?.Invoke(this, options);
+        }
+
         private void onConfirmationResponseReceived(object? sender, bool? input)
         {
             hasRun = true;
-            ConfirmationDialogResponse = input;
+            confirmationDialogResponse = input;
             StateHasChanged();
-        }
-        public void OpenConfirmationDialog()
-        {
-            appStateService?.OpenConfirmationDialog(Options);
         }
 
         void reset()
@@ -43,7 +44,15 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
             if (appStateService != null)
             {
                 var options = new ToolTipOptions() { Element = element, Text = text };
-                appStateService.OpenToolTip(options);
+                appStateService.ToolTipOptions?.Invoke(this, options);
+            }
+        }
+
+        public void Dispose()
+        {
+            if (appStateService != null)
+            {
+                appStateService.ConfirmationResponse -= onConfirmationResponseReceived;
             }
         }
     }

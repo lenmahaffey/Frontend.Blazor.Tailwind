@@ -7,45 +7,38 @@ namespace Blazor.Frontend.Bootstrap.Layout.Components
 {
     public partial class Notification
     {
-        [Inject] private NotificationService? notificationService { get; set; }
-        [Inject] public IJSRuntime? Js { get; set; }
+        [Inject] NotificationService? notificationService { get; set; }
+        [Inject] IJSRuntime? jsRuntime { get; set; }
         [Parameter] public string Id { get; set; } = "notification_" + Guid.NewGuid().ToString("N");
         [Parameter] public Message Message { get; set; } = new Message();
-        public string AnimationClass { get; set; } = "hidden";
-
-        private IJSObjectReference? _js;
+        string animationClass { get; set; } = "hidden";
+        IJSObjectReference? js { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            _js = await Js!.InvokeAsync<IJSObjectReference>("import", "./Layout/Components/Notification.razor.js");
-            await _js.InvokeVoidAsync("listenToAnimationEnd", Id, DotNetObjectReference.Create(this));
+            js = await jsRuntime!.InvokeAsync<IJSObjectReference>("import", "./Layout/Components/Notification.razor.js");
+            await js.InvokeVoidAsync("listenToAnimationEnd", Id, DotNetObjectReference.Create(this));
         }
 
         protected async override Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
-                AnimationClass = Message.IsVisible ? "slideInDown" : "hidden";
+                animationClass = Message.IsVisible ? "slideInDown" : "hidden";
             }
             else
             {
-                AnimationClass = Message.IsVisible ? "visible" : "hidden";
+                animationClass = Message.IsVisible ? "visible" : "hidden";
             }
             await base.OnAfterRenderAsync(firstRender);
         }
 
-        private void hideNotification()
+        void hideNotification()
         {
-            AnimationClass = "slideOutRight";
+            animationClass = "slideOutRight";
         }
 
-        [JSInvokable("DeleteNotification")]
-        public void DeleteNotification()
-        {
-            notificationService?.DeleteNotification(Message);
-        }
-
-        private string SetBorderColor()
+        string SetBorderColor()
         {
             switch (Message?.Type)
             {
@@ -58,6 +51,12 @@ namespace Blazor.Frontend.Bootstrap.Layout.Components
                 default:
                     return "";
             }
+        }
+
+        [JSInvokable("DeleteNotification")]
+        public void DeleteNotification()
+        {
+            notificationService?.DeleteNotification(Message);
         }
     }
 }

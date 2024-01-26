@@ -7,8 +7,6 @@ namespace Blazor.Frontend.Bootstrap.Layout
     public partial class MainLayout
     {
         [Inject] IWebAssemblyHostEnvironment? Env { get; set; }
-        [Inject] public IJSRuntime? Js { get; set; }
-        private IJSObjectReference? _js;
         string borderClassName
         {
             get
@@ -27,18 +25,22 @@ namespace Blazor.Frontend.Bootstrap.Layout
             }
         }
 
-        protected async override Task OnInitializedAsync()
+        string borderName
         {
-            if (Js != null)
+            get
             {
-                _js = await Js.InvokeAsync<IJSObjectReference>("import", "./Layout/MainLayout.razor.js");
+                switch (Env?.Environment)
+                {
+                    case "Development":
+                        return "Development";
+                    case "QA":
+                        return "QA";
+                    case "Stageing":
+                        return "Stageing";
+                    default:
+                        return "";
+                }
             }
-            await base.OnInitializedAsync();
-        }
-        protected override void OnParametersSet()
-        {
-            base.OnParametersSet();
-            Console.WriteLine(Env?.Environment);
         }
     }
 }

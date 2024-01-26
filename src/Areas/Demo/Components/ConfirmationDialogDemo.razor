@@ -2,51 +2,51 @@
 @if(!hasRun)
 {
 <div class="row">
-    <EditForm Model="@Options" OnValidSubmit="@OpenConfirmationDialog" class="row">
+    <EditForm Model="@options" OnValidSubmit="@openConfirmationDialog" class="row">
         <DataAnnotationsValidator />
 
         <div @ref="title" class="row p-0 m-0" @onmouseover="@(() => openToolTip(title, "The title of the modal."))">
-            <InputText id="confirmationTitleInput" @bind-Value="@Options.Title" class="form-control"></InputText>
+            <InputText id="confirmationTitleInput" @bind-Value="@options.Title" class="form-control"></InputText>
             <div class="col-1">
                 <label for="confirmationTitleInput" class="form-label">Title</label>
             </div>
             <div class="col">
-                <ValidationMessage class="text-danger text-end" For="@(() => Options.Title)" />
+                <ValidationMessage class="text-danger text-end" For="@(() => options.Title)" />
             </div>
         </div>
 
         <div @ref="text" class="row p-0 m-0" @onmouseover="@(() => openToolTip(text, "The message to the display; a yes/no question."))">
-            <InputText id="messageTextInput" @bind-Value="@Options.Message" class="form-control"></InputText>
+            <InputText id="messageTextInput" @bind-Value="@options.Message" class="form-control"></InputText>
             <div class="col-1">
                 <label for="messageTextInput" class="form-label">
                     Text
                 </label>
             </div>
             <div class="col">
-                <ValidationMessage class="text-danger text-end" For="@(() => Options.Message)" />
+                <ValidationMessage class="text-danger text-end" For="@(() => options.Message)" />
             </div>
         </div>
 
         <div  class="row p-0 m-0">
             <div @ref="okText" class="col" @onmouseover="@(() => openToolTip(okText, "The text of the Ok button."))">
                 <div class="row">
-                    <InputText id="okButtonTextInput" @bind-Value="@Options.OkButtonText" class="form-control"></InputText>
+                    <InputText id="okButtonTextInput" @bind-Value="@options.OkButtonText" class="form-control"></InputText>
                     <div class="col text-start">
                         <label for="okButtonTextInput" class="form-label">
                             Ok Text
                         </label>
-                        <ValidationMessage class="text-danger text-end" For="@(() => Options.OkButtonText)" />
+                        <ValidationMessage class="text-danger text-end" For="@(() => options.OkButtonText)" />
                     </div>
                 </div>
             </div>
             <div class="col ms-3">
                 <div @ref="cancelText" class="row" @onmouseover="@(() => openToolTip(cancelText, "The text of the cancel button."))">
-                    <InputText id="cancelButtonTextInput" @bind-Value="@Options.CancelButtonText" class="form-control"></InputText>
+                    <InputText id="cancelButtonTextInput" @bind-Value="@options.CancelButtonText" class="form-control"></InputText>
                     <div class="col text-start">
                         <label for="cancelButtonTextInput" class="form-label">
                             Cancel Text
                         </label>
-                        <ValidationMessage class="text-danger text-end" For="@(() => Options.OkButtonText)" />
+                        <ValidationMessage class="text-danger text-end" For="@(() => options.OkButtonText)" />
                     </div>
                 </div>
             </div>
@@ -65,21 +65,21 @@ else
 {
     <div class="row text-center h-100">
         <div>
-            @if (ConfirmationDialogResponse == null)
+            @if (confirmationDialogResponse == null)
             {
                 <p>You did not make a selection</p>
             }
             else
             {
-                <p>You selected @ConfirmationDialogResponse</p>
+                <p>You selected @confirmationDialogResponse</p>
 
             }
         </div>
         <div>
-            @if (ConfirmationDialogResponse != null)
+            @if (confirmationDialogResponse != null)
             {
                 <div>
-                    @if (ConfirmationDialogResponse == true)
+                    @if (confirmationDialogResponse == true)
                     {
                         <i class="fa-regular fa-circle-check text-success"></i>
                     }

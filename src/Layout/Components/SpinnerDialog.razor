@@ -1,9 +1,9 @@
-﻿<div @ref="spinnerDialog" class="modal fade hide" id="@Id" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="@(SpinnerDialogOptions.IsStatic ? "static" : "true")" data-bs-keyboard="@(SpinnerDialogOptions.IsStatic ? "false" : "true")">
+﻿<div @ref="spinnerDialog" class="modal fade hide" id="@id" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="@(options.IsStatic ? "static" : "true")" data-bs-keyboard="@(options.IsStatic ? "false" : "true")">
     <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body text-center">
                 <div class="spin spinner-border text-accent1" role="status"></div>
-                <div class="h5 mt-3">@Message</div>
+                <div class="h5 mt-3">@message</div>
             </div>
         </div>
     </div>

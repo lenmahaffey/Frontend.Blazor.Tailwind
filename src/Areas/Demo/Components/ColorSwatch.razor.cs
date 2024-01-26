@@ -8,37 +8,37 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
     public partial class ColorSwatch
     {
         [Inject] AppStateService? appStateService { get; set; }
-        [Inject] public IJSRuntime? Js { get; set; }
-        private IJSObjectReference? _js;
-        private string Id { get; } = Guid.NewGuid().ToString("N");
+        [Inject] public IJSRuntime? jsRuntime { get; set; }
         [Parameter] public string Name { get; set; } = string.Empty;
-        private string? rgbString { get; set; } = string.Empty;
-        private string? hexString { get; set; } = string.Empty;
+        string id { get; } = Guid.NewGuid().ToString("N");
+        string? rgbString { get; set; } = string.Empty;
+        string? hexString { get; set; } = string.Empty;
+        IJSObjectReference? js { get; set; }
         ElementReference element { get; set; }
         protected override async Task OnInitializedAsync()
         {
-            _js = await Js!.InvokeAsync<IJSObjectReference>("import", "./Areas/Demo/Components/ColorSwatch.razor.js");
-            rgbString = await GetRGBColorValueString(Id);
-            hexString = await GetHexColorValueString(Id);
+            js = await jsRuntime!.InvokeAsync<IJSObjectReference>("import", "./Areas/Demo/Components/ColorSwatch.razor.js");
+            rgbString = await GetRGBColorValueString(id);
+            hexString = await GetHexColorValueString(id);
         }
         public async Task<string> GetRGBColorValueString(string id)
         {
-            if (_js != null)
+            if (js != null)
             {
-                var result = await _js.InvokeAsync<string>("getRGBColorValue", id, DotNetObjectReference.Create(this));
+                var result = await js.InvokeAsync<string>("getRGBColorValue", id, DotNetObjectReference.Create(this));
                 return result;
             }
-            return "JS NULL";
+            return string.Empty;
         }
 
         public async Task<string> GetHexColorValueString(string id)
         {
-            if (_js != null)
+            if (js != null)
             {
-                var result = await _js.InvokeAsync<string>("getHexColorValue", id, DotNetObjectReference.Create(this));
+                var result = await js.InvokeAsync<string>("getHexColorValue", id, DotNetObjectReference.Create(this));
                 return result;
             }
-            return "JS NULL";
+            return string.Empty;
         }
 
         void OpenToolTip(string text)
@@ -46,7 +46,7 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
             if (appStateService != null)
             {
                 var options = new ToolTipOptions() { Element = element, Text = text };
-                appStateService.OpenToolTip(options);
+                appStateService.ToolTipOptions?.Invoke(this, options);
             }
         }
     }

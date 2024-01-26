@@ -1,38 +1,45 @@
-﻿<EditForm Model="@AlertMessage" OnValidSubmit="@SendAlert" class="row">
+﻿<EditForm Model="@AlertMessage" OnValidSubmit="@sendAlert" class="row">
     <DataAnnotationsValidator />
-    <div @ref="Type" class="row" @onmouseover="@(() => OpenToolTip(Type, "The type of alert to display."))">
+    <div @ref="type" @onmouseover="@(() => openToolTip(type, "The type of alert to display."))" class="row">
         <InputSelect id="alertMessageTypeSelect" @bind-Value="@AlertMessage.Type" class="form-select">
             @foreach (var messageType in Enum.GetValues(typeof(MessageType)))
             {
                 <option value="@messageType">@messageType</option>
             }
         </InputSelect>
-        <label for="alertMessageTypeSelect" class="form-label">Type</label>
+        <label for="alertMessageTypeSelect" class="form-label">
+            Type
+        </label>
     </div>
-
-    <div @ref="Text" class="row" @onmouseover="@(() => OpenToolTip(Text, "The message to display to the user."))">
-        <InputText id="messageTextInput" @bind-Value="@AlertMessage.Text" class="form-control"></InputText>
+    <div @ref="text" @onmouseover="@(() => openToolTip(text, "The message to display to the user."))" class="row">
+        <InputText @bind-Value="@AlertMessage.Text" id="messageTextInput" class="form-control"></InputText>
         <div class="col-1">
-            <label for="messageTextInput" class="form-label">Text</label>
+            <label for="messageTextInput" class="form-label">
+                Text
+            </label>
         </div>
         <div class="col">
             <ValidationMessage class="text-danger text-end" For="@(() => AlertMessage.Text)" />
         </div>
     </div>
     <div class="row">
-        <div @ref="AutoDismiss" class="col" @onmouseover="@(() => OpenToolTip(AutoDismiss, "Should the alert dismiss itself after a time period."))">
+        <div @ref="autoDismiss" @onmouseover="@(() => openToolTip(autoDismiss, "Should the alert dismiss itself after a time period."))" class="col">
             <div class="form-switch row">
                 <div class="row ms-1">
-                    <InputCheckbox class="form-check-input col-1" type="checkbox" id="dismissSwitch" @bind-Value="@AlertMessage.AutoDismiss"></InputCheckbox>
-                    <div class="col" for="dismissSwitch">Auto-dismiss</div>
+                    <InputCheckbox @bind-Value="@AlertMessage.AutoDismiss" id="dismissSwitch" type="checkbox" class="form-check-input col-1"></InputCheckbox>
+                    <div class="col" for="dismissSwitch">
+                        Auto-dismiss
+                    </div>
                 </div>
             </div>
         </div>
-        <div @ref="Time" class="col-4 me-3 @(AlertMessage.AutoDismiss ? "visible": "invisible") pe-0" @onmouseover="@(() => OpenToolTip(Time, "How long should the alert display before dismissing"))">
+        <div @ref="time" @onmouseover="@(() => openToolTip(time, "How long should the alert display before dismissing"))" class="col-4 me-3 @(AlertMessage.AutoDismiss ? "visible": "invisible") pe-0">
             <div class="row">
                 <InputNumber id="displayTimeInput" @bind-Value="@AlertMessage.DisplayTime" class="form-control" />
                 <div class="col-1">
-                    <label for="displayTimeInput" class="form-label">Time</label>
+                    <label for="displayTimeInput" class="form-label">
+                        Time
+                    </label>
                 </div>
                 <div class="col">
                     <ValidationMessage class="text-danger text-end" For="@(() => AlertMessage.DisplayTime)" />

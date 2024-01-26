@@ -7,23 +7,23 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
     public partial class SpinnerDialogDemo
     {
         [Inject] AppStateService? appStateService { get; set; }
-        string Message { get; set; } = "Spin the Spinner";
-        int DisplayTime { get; set; } = 5;
-        int CountdownTime { get; set; } = 3;
-        bool IsStatic { get; set; } = true;
+        string message { get; set; } = "Spin the Spinner";
+        int displayTime { get; set; } = 5;
+        int countdownTime { get; set; } = 3;
+        bool isStatic { get; set; } = true;
         ElementReference countdownTimeInput { get; set; }
         ElementReference displayTimeInput { get; set; }
         ElementReference messageInput { get; set; }
-        public async void StartSpinner()
+        async void startSpinner()
         {
             openSpinner();
-            await wait(DisplayTime);
-            for (int i = 0; i <= CountdownTime; i++)
+            await wait(displayTime);
+            for (int i = 0; i <= countdownTime; i++)
             {
                 await wait(1);
-                if(i != CountdownTime)
+                if(i != countdownTime)
                 {
-                    updateSpinnerMessage($"Closing in {CountdownTime - i} seconds");
+                    updateSpinnerMessage($"Closing in {countdownTime - i} seconds");
 
                 }
                 else 
@@ -39,12 +39,12 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
         {
             var options = new SpinnerDialogOptions()
             {
-                Message = this.Message,
-                IsStatic = this.IsStatic,
+                Message = this.message,
+                IsStatic = this.isStatic,
             };
             if (appStateService != null)
             {
-                appStateService.OpenSpinnerDialog(options);
+                appStateService?.SpinnerDialogOptions?.Invoke(this, options);
             }
         }
 
@@ -67,12 +67,12 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
         {
             await Task.Delay(seconds * 1000);
         }
-        void OpenToolTip(ElementReference element, string text)
+        void openToolTip(ElementReference element, string text)
         {
             if (appStateService != null)
             {
                 var options = new ToolTipOptions() { Element = element, Text = text };
-                appStateService.OpenToolTip(options);
+                appStateService?.ToolTipOptions?.Invoke(this, options);
             }
         }
     }

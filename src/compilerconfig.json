@@ -1,66 +1,92 @@
-﻿[
+[
   {
     "outputFile": "wwwroot/css/bootstrap.css",
-    "inputFile": "Styles/bootstrap.scss"
+    "inputFile": "Styles/bootstrap.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "wwwroot/css/app.css",
-    "inputFile": "Styles/app.scss"
+    "inputFile": "Styles/app.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Areas/Demo/Components/ColorSwatchDemo.razor.css",
-    "inputFile": "Areas/Demo/Components/ColorSwatchDemo.razor.scss"
+    "inputFile": "Areas/Demo/Components/ColorSwatchDemo.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Areas/Demo/Components/ConfirmationDialogDemo.razor.css",
-    "inputFile": "Areas/Demo/Components/ConfirmationDialogDemo.razor.scss"
+    "inputFile": "Areas/Demo/Components/ConfirmationDialogDemo.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Areas/Demo/Demo.razor.css",
-    "inputFile": "Areas/Demo/Demo.razor.scss"
+    "inputFile": "Areas/Demo/Demo.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Layout/Components/Alert.razor.css",
-    "inputFile": "Layout/Components/Alert.razor.scss"
+    "inputFile": "Layout/Components/Alert.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Layout/Components/AlertContainer.razor.css",
-    "inputFile": "Layout/Components/AlertContainer.razor.scss"
+    "inputFile": "Layout/Components/AlertContainer.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Layout/Components/Footer.razor.css",
-    "inputFile": "Layout/Components/Footer.razor.scss"
+    "inputFile": "Layout/Components/Footer.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Layout/Components/NavBar.razor.css",
-    "inputFile": "Layout/Components/NavBar.razor.scss"
+    "inputFile": "Layout/Components/NavBar.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Layout/Components/Notification.razor.css",
-    "inputFile": "Layout/Components/Notification.razor.scss"
+    "inputFile": "Layout/Components/Notification.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Layout/Components/NotificationContainer.razor.css",
-    "inputFile": "Layout/Components/NotificationContainer.razor.scss"
+    "inputFile": "Layout/Components/NotificationContainer.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Layout/Components/RightSideBar.razor.css",
-    "inputFile": "Layout/Components/RightSideBar.razor.scss"
+    "inputFile": "Layout/Components/RightSideBar.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Layout/Components/SpinnerDialog.razor.css",
-    "inputFile": "Layout/Components/SpinnerDialog.razor.scss"
+    "inputFile": "Layout/Components/SpinnerDialog.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Layout/Components/ToolTip.razor.css",
-    "inputFile": "Layout/Components/ToolTip.razor.scss"
+    "inputFile": "Layout/Components/ToolTip.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   },
   {
     "outputFile": "Layout/MainLayout.razor.css",
-    "inputFile": "Layout/MainLayout.razor.scss"
-  },
-  {
-    "outputFile": "Areas/Demo/Components/AlertDemo.razor.css",
-    "inputFile": "Areas/Demo/Components/AlertDemo.razor.scss"
+    "inputFile": "Layout/MainLayout.razor.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   }
 ]

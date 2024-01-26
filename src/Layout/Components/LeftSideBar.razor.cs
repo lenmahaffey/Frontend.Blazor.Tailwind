@@ -5,27 +5,38 @@ using Microsoft.JSInterop;
 
 namespace Blazor.Frontend.Bootstrap.Layout.Components
 {
-    public partial class LeftSideBar
+    public partial class LeftSideBar : IDisposable
     {
-        [Inject] public IJSRuntime? Js { get; set; }
+        [Inject] IJSRuntime? jsRuntime { get; set; }
         [Inject] AppStateService? appStateService { get; set; }
-        public List<NavLinkGroup> Links { get; set; } = new List<NavLinkGroup>();
-        private IJSObjectReference? _js;
+        List<NavLinkGroup> links { get; set; } = new List<NavLinkGroup>();
+        IJSObjectReference? js { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            _js = await Js!.InvokeAsync<IJSObjectReference>("import", "./Layout/Components/LeftSideBar.razor.js");
-            await _js.InvokeVoidAsync("listenForDropdowns", DotNetObjectReference.Create(this));
+            js = await jsRuntime!.InvokeAsync<IJSObjectReference>("import", "./Layout/Components/LeftSideBar.razor.js");
+            await js.InvokeVoidAsync("listenForDropdowns", DotNetObjectReference.Create(this));
         }
         protected override void OnInitialized()
         {
-            appStateService!.SideNavLinks += OnLinksReceived;
             base.OnInitialized();
+            if (appStateService != null)
+            {
+                appStateService.SideNavLinks += onLinksReceived;
+            }
         }
 
-        public void OnLinksReceived(object? sender, List<NavLinkGroup> Links)
+        void onLinksReceived(object? sender, List<NavLinkGroup> Links)
         {
-            this.Links = Links ?? new List<NavLinkGroup>();
+            this.links = Links ?? new List<NavLinkGroup>();
+        }
+
+        public void Dispose()
+        {
+            if (appStateService != null)
+            {
+                appStateService.SideNavLinks += onLinksReceived;
+            }
         }
     }
 }

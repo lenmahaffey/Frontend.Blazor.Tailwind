@@ -5,24 +5,32 @@ using Microsoft.JSInterop;
 
 namespace Blazor.Frontend.Bootstrap.Layout.Components
 {
-    public partial class ToolTip
+    public partial class ToolTip : IDisposable
     {
         [Inject] AppStateService? appStateService { get; set; }
-        [Inject] public IJSRuntime? Js { get; set; }
-        string Text { get; set; } = "Tooltip";
-        private IJSObjectReference? _js;
+        [Inject] IJSRuntime? jsRuntime { get; set; }
+        string text { get; set; } = "Tooltip";
+        IJSObjectReference? js { get; set; }
         protected override async Task OnInitializedAsync()
         {
-            _js = await Js!.InvokeAsync<IJSObjectReference>("import", "./Layout/Components/ToolTip.razor.js");
-            appStateService!.ToolTipOptions += onToolTipTextReceived;
             await base.OnInitializedAsync();
+            js = await jsRuntime!.InvokeAsync<IJSObjectReference>("import", "./Layout/Components/ToolTip.razor.js");
+            if (appStateService != null)
+            {
+                appStateService.ToolTipOptions += onToolTipTextReceived;
+            }
         }
 
         void onToolTipTextReceived(object? sender, ToolTipOptions options)
         {
-            Text = options.Text;
+            text = options.Text;
             StateHasChanged();
-            _js!.InvokeVoidAsync("addMouseEvents", options.Element);
+            js!.InvokeVoidAsync("addMouseEvents", options.Element);
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,37 +1,39 @@
 ﻿<div class="row h-100 me-2">
-    <EditForm Model="this" OnValidSubmit="@StartSpinner" class="row">
+    <EditForm Model="this" OnValidSubmit="@startSpinner" class="row">
         <div class="ms-3">
             <DataAnnotationsValidator />
-            <div @ref="messageInput" class="row" @onmouseover="@(() => OpenToolTip(messageInput, "The message to be displayed on the spinner."))">
-                <InputText id="messageTextInput" @bind-Value="@Message" class="form-control"></InputText>
+            <div @ref="messageInput" @onmouseover="@(() => openToolTip(messageInput, "The message to be displayed on the spinner."))" class="row">
+                <InputText @bind-Value="@message" id="messageTextInput" class="form-control"></InputText>
                 <div class="col-1">
-                    <label for="messageTextInput" class="form-label">Text</label>
+                    <label for="messageTextInput" class="form-label">
+                        Text
+                    </label>
                 </div>
                 <div class="col">
-                    <ValidationMessage class="text-danger text-end" For="@(() => Message)" />
+                    <ValidationMessage class="text-danger text-end" For="@(() => message)" />
                 </div>
             </div>
 
             <div class="row">
-                <div @ref="displayTimeInput" class="col" @onmouseover="@(() => OpenToolTip(displayTimeInput, "How long the spinner will be displayed before the countdown starts."))">
+                <div @ref="displayTimeInput" @onmouseover="@(() => openToolTip(displayTimeInput, "How long the spinner will be displayed before the countdown starts."))" class="col">
                     <div class="row">
-                        <InputNumber id="displayTimeInput" @bind-Value="@DisplayTime" class="form-control"></InputNumber>
+                        <InputNumber @bind-Value="@displayTime" id="displayTimeInput" class="form-control"></InputNumber>
                         <div class="col text-start">
                             <label for="displayTimeInput" class="form-label">
                                 Display
                             </label>
-                            <ValidationMessage class="text-danger text-end" For="@(() => DisplayTime)" />
+                            <ValidationMessage class="text-danger text-end" For="@(() => displayTime)" />
                         </div>
                     </div>
                 </div>
-                <div @ref="countdownTimeInput" class="col ms-3" @onmouseover="@(() => OpenToolTip(countdownTimeInput, "Time before the modal closes."))">
+                <div @ref="countdownTimeInput" @onmouseover="@(() => openToolTip(countdownTimeInput, "Time before the modal closes."))" class="col ms-3">
                     <div class="row">
-                        <InputNumber id="countdownTimeInput" @bind-Value="@CountdownTime" class="form-control"></InputNumber>
+                        <InputNumber @bind-Value="@countdownTime" id="countdownTimeInput" class="form-control"></InputNumber>
                         <div class="col text-start">
                             <label for="countdownTimeInput" class="form-label">
                                 Countdown
                             </label>
-                            <ValidationMessage class="text-danger text-end" For="@(() => CountdownTime)" />
+                            <ValidationMessage class="text-danger text-end" For="@(() => countdownTime)" />
                         </div>
                     </div>
                 </div>
