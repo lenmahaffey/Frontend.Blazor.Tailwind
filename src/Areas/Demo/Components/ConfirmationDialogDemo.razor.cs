@@ -8,8 +8,13 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
     {
         [Inject] AppStateService? appStateService { get; set; }
         public bool? ConfirmationDialogResponse { get; set; }
-        public ConfirmationDialogOptions options { get; set; } = new ConfirmationDialogOptions();
+        public ConfirmationDialogOptions Options { get; set; } = new ConfirmationDialogOptions();
         bool hasRun { get; set; } = false;
+        ElementReference title { get; set; }
+        ElementReference text { get; set; }
+        ElementReference okText { get; set; }
+        ElementReference cancelText { get; set; }
+
         protected override void OnParametersSet()
         {
             base.OnParametersSet();
@@ -26,12 +31,20 @@ namespace Blazor.Frontend.Bootstrap.Areas.Demo.Components
         }
         public void OpenConfirmationDialog()
         {
-            appStateService?.OpenConfirmationDialog(options);
+            appStateService?.OpenConfirmationDialog(Options);
         }
 
         void reset()
         {
             hasRun = false;
+        }
+        void openToolTip(ElementReference element, string text)
+        {
+            if (appStateService != null)
+            {
+                var options = new ToolTipOptions() { Element = element, Text = text };
+                appStateService.OpenToolTip(options);
+            }
         }
     }
 }

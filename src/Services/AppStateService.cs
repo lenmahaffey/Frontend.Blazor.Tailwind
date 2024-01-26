@@ -13,6 +13,7 @@ namespace Blazor.Frontend.Bootstrap.Services
         public EventHandler<bool?>? ConfirmationResponse;
         public EventHandler<ConfirmationDialogOptions>? ConfirmationDialogOptions;
         public EventHandler<SpinnerDialogOptions>? SpinnerDialogOptions;
+        public EventHandler<string>? SpinnerMessage;
         public EventHandler<bool>? CloseSpinner;
         public EventHandler<ToolTipOptions>? ToolTipOptions;
         public EventHandler<RenderFragment>? RightSideBarContent;
@@ -55,7 +56,7 @@ namespace Blazor.Frontend.Bootstrap.Services
             }
         }
 
-        public void CloseSpinnerDialog(ConfirmationDialogOptions options)
+        public void CloseSpinnerDialog()
         {
             if (CloseSpinner != null)
             {
@@ -92,6 +93,14 @@ namespace Blazor.Frontend.Bootstrap.Services
             if (RightSideBarContent != null)
             {
                 RightSideBarContent.Invoke(this, fragment);
+            }
+        }
+
+        public void UpdateSpinnerMessage(string message)
+        {
+            if(SpinnerMessage != null)
+            {
+                SpinnerMessage.Invoke(this, message);
             }
         }
     }

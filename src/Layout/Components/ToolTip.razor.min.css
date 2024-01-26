@@ -1,1 +1,1 @@
-﻿#toolTip{background-color:rgba(11,13,15,.9);position:absolute;z-index:1000;border-radius:5px;}
+﻿#toolTip{background-color:rgba(11,13,15,.9);max-width:250px;position:absolute;z-index:1000;border-radius:5px;}

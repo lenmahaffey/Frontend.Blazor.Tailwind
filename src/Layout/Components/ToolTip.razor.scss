@@ -2,6 +2,7 @@
 
 #toolTip {
     background-color: rgb(map-get($black, 900), .9);
+    max-width:250px;
     position: absolute;
     z-index: 1000;
     border-radius: 5px;

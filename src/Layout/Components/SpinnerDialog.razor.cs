@@ -30,12 +30,19 @@ namespace Blazor.Frontend.Bootstrap.Layout.Components
             {
                 AppStateService.SpinnerDialogOptions += OnSpinnerDialogOptionsReceived;
                 AppStateService.CloseSpinner += OnCloseSpinnerReceived;
+                AppStateService.SpinnerMessage += onSpinnerMessageReceived;
             }
+        }
+        void onSpinnerMessageReceived(object? sender, string message)
+        {
+            Message = message;
+            StateHasChanged();
         }
 
         public void OnSpinnerDialogOptionsReceived(object? sender, SpinnerDialogOptions options)
         {
             SpinnerDialogOptions = options;
+            Message = SpinnerDialogOptions.Message;
             StateHasChanged();
             _js!.InvokeVoidAsync("setAttributes", spinnerDialog, options.IsStatic, DotNetObjectReference.Create(this));
         }

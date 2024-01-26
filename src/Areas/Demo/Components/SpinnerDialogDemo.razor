@@ -1,15 +1,48 @@
-﻿<div class="row">
-    <div class="row text-center m-0 p-0">
-        <p>Spin the spinner</p>
-    </div>
-    <div class="row d-flex m-0 p-0 align-content-end">
-        <div class="text-center">
-            <button type="button" class="btn btn-primary" @onclick="@(() => OpenSpinner("Static Spinner", true))">
-                Open Static Demo
-            </button>
-            <button type="button" class="btn btn-primary" @onclick="@(() => OpenSpinner("Dismissable Spinner", false))">
-                Open Dismissable Spinner
-            </button>
+﻿<div class="row h-100 me-2">
+    <EditForm Model="this" OnValidSubmit="@StartSpinner" class="row">
+        <div class="ms-3">
+            <DataAnnotationsValidator />
+            <div @ref="messageInput" class="row" @onmouseover="@(() => OpenToolTip(messageInput, "The message to be displayed on the spinner."))">
+                <InputText id="messageTextInput" @bind-Value="@Message" class="form-control"></InputText>
+                <div class="col-1">
+                    <label for="messageTextInput" class="form-label">Text</label>
+                </div>
+                <div class="col">
+                    <ValidationMessage class="text-danger text-end" For="@(() => Message)" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div @ref="displayTimeInput" class="col" @onmouseover="@(() => OpenToolTip(displayTimeInput, "How long the spinner will be displayed before the countdown starts."))">
+                    <div class="row">
+                        <InputNumber id="displayTimeInput" @bind-Value="@DisplayTime" class="form-control"></InputNumber>
+                        <div class="col text-start">
+                            <label for="displayTimeInput" class="form-label">
+                                Display
+                            </label>
+                            <ValidationMessage class="text-danger text-end" For="@(() => DisplayTime)" />
+                        </div>
+                    </div>
+                </div>
+                <div @ref="countdownTimeInput" class="col ms-3" @onmouseover="@(() => OpenToolTip(countdownTimeInput, "Time before the modal closes."))">
+                    <div class="row">
+                        <InputNumber id="countdownTimeInput" @bind-Value="@CountdownTime" class="form-control"></InputNumber>
+                        <div class="col text-start">
+                            <label for="countdownTimeInput" class="form-label">
+                                Countdown
+                            </label>
+                            <ValidationMessage class="text-danger text-end" For="@(() => CountdownTime)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="d-flex align-items-end">
+            <div class="w-100 text-center">
+                <button type="submit" class="btn btn-primary">
+                    Open Spinner Demo
+                </button>
+            </div>
+        </div>
+    </EditForm>
 </div>

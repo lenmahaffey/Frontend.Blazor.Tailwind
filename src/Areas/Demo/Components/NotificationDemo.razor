@@ -1,29 +1,29 @@
 ﻿<EditForm Model="@NotificationMessage" OnValidSubmit="@SendNotification" class="row">
     <DataAnnotationsValidator />
-    <div class="row">
+    <div @ref="Type" class="row" @onmouseover="@(() => openToolTip(Type, "The type of notification."))">
         <InputSelect id="notificationMessageTypeSelect" @bind-Value="@NotificationMessage.Type" class="form-select">
             @foreach (var messageType in Enum.GetValues(typeof(MessageType)))
             {
                 <option value="@messageType">@messageType</option>
             }
         </InputSelect>
-        <label for="notificationMessageTypeSelect" class="form-label ps-2">Type</label>
+        <label for="notificationMessageTypeSelect" class="form-label">Type</label>
     </div>
 
-    <div class="row">
+    <div @ref="Title" class="row" @onmouseover="@(() => openToolTip(Title, "The title of the noftification."))">
         <InputText id="notificationMessageTitleInput" @bind-Value="@NotificationMessage.Title" class="form-control"></InputText>
         <div class="col-1">
-            <label for="notificationMessageTitleInput" class="form-label ps-2 col">Title</label>
+            <label for="notificationMessageTitleInput" class="form-label col">Title</label>
         </div>
         <div class="col text-danger text-end">
             <ValidationMessage For="@(() => NotificationMessage.Title)" />
         </div>
     </div>
 
-    <div class="row">
+    <div @ref="Text" class="row" @onmouseover="@(() => openToolTip(Text, "The message to display to the user."))">
         <InputText id="notificationMessageTextInput" @bind-Value="@NotificationMessage.Text" class="form-control"></InputText>
         <div class="col-1">
-            <label for="messageTextInput" class="form-label ps-2">Text</label>
+            <label for="messageTextInput" class="form-label">Text</label>
         </div>
         <div class="col text-danger text-end">
             <ValidationMessage class="text-danger" For="@(() => NotificationMessage.Text)" />

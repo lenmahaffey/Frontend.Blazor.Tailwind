@@ -5,7 +5,7 @@
       "loadPaths": "",
       "style": "expanded",
       "relativeUrls": true,
-      "sourceMap": true
+      "sourceMap": false
     }
   },
   "minifiers": {

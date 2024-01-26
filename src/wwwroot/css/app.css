@@ -1,5 +1,4 @@
 ﻿html, body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   overflow: hidden;
 }
 
@@ -54,5 +53,3 @@
 .btn {
   box-shadow: 0px 1px 5px 1px #909294 !important;
 }
-
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///C:/Users/mahaf/Documents/sourceCode/Blazor.Frontend/Blazor.Frontend/src/Styles/app.scss%22,%22file:///C:/Users/mahaf/Documents/sourceCode/Blazor.Frontend/Blazor.Frontend/src/Styles/_colors.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAEA;EACI;EACA;;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAIJ;AACA;EACI;;;AAGJ;AACA;EACI,YC3CI;;;AD8CR;AACA;EACI;;;AAGJ;AACA;EACI;;;AAGJ;EACI%22%7D */
