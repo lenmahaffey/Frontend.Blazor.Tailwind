@@ -4,7 +4,6 @@ export function listenForDropdowns(dotnet) {
 
     for (i = 0; i < dropdown.length; i++) {
         dropdown[i].addEventListener("click", function () {
-            console.log("click")
             this.classList.toggle("active");
             var dropdownContent = this.nextElementSibling;
             if (dropdownContent.style.display === "block") {

@@ -20,7 +20,6 @@ namespace Blazor.Frontend.Bootstrap.Layout.Components
 
         void onToolTipTextReceived(object? sender, ToolTipOptions options)
         {
-            //Console.WriteLine("Tooltip received options");
             Text = options.Text;
             StateHasChanged();
             _js!.InvokeVoidAsync("addMouseEvents", options.Element);

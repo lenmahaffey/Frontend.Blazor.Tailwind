@@ -4,7 +4,6 @@ export function openSpinner(spinner) {
 }
 export function closeSpinner(spinner) {
     var modal = bootstrap.Modal.getInstance(spinner)
-    console.log(modal)
     modal.hide()
 }
 
