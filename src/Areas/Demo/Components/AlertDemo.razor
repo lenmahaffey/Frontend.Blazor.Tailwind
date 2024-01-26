@@ -19,7 +19,7 @@
             <ValidationMessage class="text-danger text-end" For="@(() => AlertMessage.Text)" />
         </div>
     </div>
-    <div class="row ps-0 pe-0">
+    <div class="row">
         <div @ref="AutoDismiss" class="col" @onmouseover="@(() => OpenToolTip(AutoDismiss, "Should the alert dismiss itself after a time period."))">
             <div class="form-switch row">
                 <div class="row ms-1">
@@ -28,19 +28,16 @@
                 </div>
             </div>
         </div>
-        <div @ref="Time" class="col-3 ms-2 @(AlertMessage.AutoDismiss ? "visible": "invisible") pe-0" @onmouseover="@(() => OpenToolTip(Time, "How long should the alert display before dismissing"))">
+        <div @ref="Time" class="col-4 me-3 @(AlertMessage.AutoDismiss ? "visible": "invisible") pe-0" @onmouseover="@(() => OpenToolTip(Time, "How long should the alert display before dismissing"))">
             <div class="row">
                 <InputNumber id="displayTimeInput" @bind-Value="@AlertMessage.DisplayTime" class="form-control" />
                 <div class="col-1">
-                    <label for="displayTimeInput" class="form-label ps-2">Time</label>
+                    <label for="displayTimeInput" class="form-label">Time</label>
                 </div>
                 <div class="col">
                     <ValidationMessage class="text-danger text-end" For="@(() => AlertMessage.DisplayTime)" />
                 </div>
             </div>
-        </div>
-        <div class="col-1">
-            <label for="messageTextInput" class="form-label ps-2"></label>
         </div>
     </div>
     <div class="text-center row d-flex m-0 p-0 align-content-end">

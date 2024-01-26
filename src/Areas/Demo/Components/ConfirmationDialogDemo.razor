@@ -1,91 +1,137 @@
-﻿<div class="row">
-    @if(!hasRun)
-    {
-        <EditForm Model="@Options" OnValidSubmit="@OpenConfirmationDialog" class="row">
-            <DataAnnotationsValidator />
+﻿
+@if(!hasRun)
+{
+<div class="row">
+    <EditForm Model="@Options" OnValidSubmit="@OpenConfirmationDialog" class="row">
+        <DataAnnotationsValidator />
 
-            <div @ref="title" class="row p-0 m-0" @onmouseover="@(() => openToolTip(title, "The title of the modal."))">
-                <InputText id="confirmationTitleInput" @bind-Value="@Options.Title" class="form-control"></InputText>
-                <div class="col-1">
-                    <label for="confirmationTitleInput" class="form-label">Title</label>
-                </div>
-                <div class="col">
-                    <ValidationMessage class="text-danger text-end" For="@(() => Options.Title)" />
-                </div>
+        <div @ref="title" class="row p-0 m-0" @onmouseover="@(() => openToolTip(title, "The title of the modal."))">
+            <InputText id="confirmationTitleInput" @bind-Value="@Options.Title" class="form-control"></InputText>
+            <div class="col-1">
+                <label for="confirmationTitleInput" class="form-label">Title</label>
             </div>
-
-            <div @ref="text" class="row p-0 m-0" @onmouseover="@(() => openToolTip(text, "The message to the display; a yes/no question."))">
-                <InputText id="messageTextInput" @bind-Value="@Options.Message" class="form-control"></InputText>
-                <div class="col-1">
-                    <label for="messageTextInput" class="form-label">
-                        Text
-                    </label>
-                </div>
-                <div class="col">
-                    <ValidationMessage class="text-danger text-end" For="@(() => Options.Message)" />
-                </div>
+            <div class="col">
+                <ValidationMessage class="text-danger text-end" For="@(() => Options.Title)" />
             </div>
+        </div>
 
-            <div  class="row p-0 m-0">
-                <div @ref="okText" class="col" @onmouseover="@(() => openToolTip(okText, "The text of the Ok button."))">
-                    <div class="row">
-                        <InputText id="okButtonTextInput" @bind-Value="@Options.OkButtonText" class="form-control"></InputText>
-                        <div class="col text-start">
-                            <label for="okButtonTextInput" class="form-label">
-                                Ok Text
-                            </label>
-                            <ValidationMessage class="text-danger text-end" For="@(() => Options.OkButtonText)" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col ms-3">
-                    <div @ref="cancelText" class="row" @onmouseover="@(() => openToolTip(cancelText, "The text of the cancel button."))">
-                        <InputText id="cancelButtonTextInput" @bind-Value="@Options.CancelButtonText" class="form-control"></InputText>
-                        <div class="col text-start">
-                            <label for="cancelButtonTextInput" class="form-label">
-                                Cancel Text
-                            </label>
-                            <ValidationMessage class="text-danger text-end" For="@(() => Options.OkButtonText)" />
-                        </div>
+        <div @ref="text" class="row p-0 m-0" @onmouseover="@(() => openToolTip(text, "The message to the display; a yes/no question."))">
+            <InputText id="messageTextInput" @bind-Value="@Options.Message" class="form-control"></InputText>
+            <div class="col-1">
+                <label for="messageTextInput" class="form-label">
+                    Text
+                </label>
+            </div>
+            <div class="col">
+                <ValidationMessage class="text-danger text-end" For="@(() => Options.Message)" />
+            </div>
+        </div>
+
+        <div  class="row p-0 m-0">
+            <div @ref="okText" class="col" @onmouseover="@(() => openToolTip(okText, "The text of the Ok button."))">
+                <div class="row">
+                    <InputText id="okButtonTextInput" @bind-Value="@Options.OkButtonText" class="form-control"></InputText>
+                    <div class="col text-start">
+                        <label for="okButtonTextInput" class="form-label">
+                            Ok Text
+                        </label>
+                        <ValidationMessage class="text-danger text-end" For="@(() => Options.OkButtonText)" />
                     </div>
                 </div>
             </div>
-            <div class="text-center row d-flex m-0 p-0 align-content-end">
-                <div>
-                    <button type="submit" class="btn btn-primary">
-                        Open Confirmation Demo
-                    </button>
+            <div class="col ms-3">
+                <div @ref="cancelText" class="row" @onmouseover="@(() => openToolTip(cancelText, "The text of the cancel button."))">
+                    <InputText id="cancelButtonTextInput" @bind-Value="@Options.CancelButtonText" class="form-control"></InputText>
+                    <div class="col text-start">
+                        <label for="cancelButtonTextInput" class="form-label">
+                            Cancel Text
+                        </label>
+                        <ValidationMessage class="text-danger text-end" For="@(() => Options.OkButtonText)" />
+                    </div>
                 </div>
             </div>
-        </EditForm>
-    }
-    else
-    {
-        <div class="row text-center">
-            @if (ConfirmationDialogResponse != null)
+        </div>
+        <div class="text-center row d-flex m-0 p-0 align-content-end">
+            <div>
+                <button type="submit" class="btn btn-primary">
+                    Open Confirmation Demo
+                </button>
+            </div>
+        </div>
+    </EditForm>
+</div>
+}
+else
+{
+    <div class="row text-center h-100">
+        <div>
+            @if (ConfirmationDialogResponse == null)
+            {
+                <p>You did not make a selection</p>
+            }
+            else
             {
                 <p>You selected @ConfirmationDialogResponse</p>
-                if (ConfirmationDialogResponse == true)
-                {
-                    <i class="fa-regular fa-circle-check text-success"></i>
-                }
-                else
-                {
-                    <i class="fa-regular fa-circle-xmark text-danger"></i>
-                }
+
+            }
+        </div>
+        <div>
+            @if (ConfirmationDialogResponse != null)
+            {
+                <div>
+                    @if (ConfirmationDialogResponse == true)
+                    {
+                        <i class="fa-regular fa-circle-check text-success"></i>
+                    }
+                    else
+                    {
+                        <i class="fa-regular fa-circle-xmark text-danger"></i>
+                    }
+                </div>
+            }
+            else
+            {
+                <i class="fa-regular fa-circle-question text-warning"></i>
+            }
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="align-bottom align-self-end">
+                <button @onclick="reset" class="btn btn-primary">
+                    Reset
+                </button>
+            </div>
+        </div>
+    </div>
+    @* <div class="row text-center h-100">
+        <div>
+            <p >You selected @ConfirmationDialogResponse</p>
+        </div>
+        <div>
+            @if (ConfirmationDialogResponse != null)
+            {
+                <div>
+                    @if (ConfirmationDialogResponse == true)
+                    {
+                        <i class="fa-regular fa-circle-check text-success"></i>
+                    }
+                    else
+                    {
+                        <i class="fa-regular fa-circle-xmark text-danger"></i>
+                    }
+                </div>
             }
             else
             {
                 <p>You did not make a selection</p>
                 <i class="fa-regular fa-circle-question text-warning"></i>
             }
-            <div class="text-center row d-flex m-0 p-0 align-content-end">
-                <div>
-                    <button @onclick="reset" class="btn btn-primary">
-                        Reset
-                    </button>
-                </div>
+        </div>
+        <div class="bg-success">
+            <div>
+                <button @onclick="reset" class="btn btn-primary">
+                    Reset
+                </button>
             </div>
         </div>
-    }
-    </div>
+    </div> *@
+}
