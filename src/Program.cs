@@ -1,5 +1,5 @@
-using Blazor.Frontend.Bootstrap;
-using Blazor.Frontend.Bootstrap.Services;
+using Frontend.Blazor.Bootstrap;
+using Frontend.Blazor.Bootstrap.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

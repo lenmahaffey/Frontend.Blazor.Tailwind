@@ -1,6 +1,6 @@
-﻿using Blazor.Frontend.Bootstrap.Classes;
+﻿using Frontend.Blazor.Bootstrap.Classes;
 
-namespace Blazor.Frontend.Bootstrap.Services
+namespace Frontend.Blazor.Bootstrap.Services
 {
     public class AlertService
     {

@@ -1,4 +1,4 @@
-﻿namespace Blazor.Frontend.Bootstrap.Layout.Components
+﻿namespace Frontend.Blazor.Bootstrap.Layout.Components
 {
     public partial class Footer
     {

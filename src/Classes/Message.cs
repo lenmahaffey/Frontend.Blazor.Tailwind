@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Blazor.Frontend.Bootstrap.Classes
+namespace Frontend.Blazor.Bootstrap.Classes
 {
     public class Message
     {

@@ -1,7 +1,7 @@
-﻿using Blazor.Frontend.Bootstrap.Classes;
+﻿using Frontend.Blazor.Bootstrap.Classes;
 using Microsoft.AspNetCore.Components;
 
-namespace Blazor.Frontend.Bootstrap.Services
+namespace Frontend.Blazor.Bootstrap.Services
 {
     public class AppStateService
     {

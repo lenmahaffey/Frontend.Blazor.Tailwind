@@ -1,10 +1,10 @@
-﻿using Blazor.Frontend.Bootstrap.Classes;
-using Blazor.Frontend.Bootstrap.Services;
+﻿using Frontend.Blazor.Bootstrap.Classes;
+using Frontend.Blazor.Bootstrap.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 
-namespace Blazor.Frontend.Bootstrap.Layout.Components
+namespace Frontend.Blazor.Bootstrap.Layout.Components
 {
     public partial class ConfirmationDialog
     {

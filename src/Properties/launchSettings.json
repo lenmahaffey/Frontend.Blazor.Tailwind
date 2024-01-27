@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "Blazor.Frontend.Bootstrap": {
+    "Frontend.Blazor.Bootstrap": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

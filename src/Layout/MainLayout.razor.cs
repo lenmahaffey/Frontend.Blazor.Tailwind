@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.JSInterop;
 
-namespace Blazor.Frontend.Bootstrap.Layout
+namespace Frontend.Blazor.Bootstrap.Layout
 {
     public partial class MainLayout
     {

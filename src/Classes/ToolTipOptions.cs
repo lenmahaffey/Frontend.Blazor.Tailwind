@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace Blazor.Frontend.Bootstrap.Classes
+namespace Frontend.Blazor.Bootstrap.Classes
 {
     public class ToolTipOptions
     {
