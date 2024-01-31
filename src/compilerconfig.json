@@ -1,11 +1,5 @@
 [
   {
-    "outputFile": "wwwroot/css/bootstrap.css",
-    "inputFile": "Styles/bootstrap.scss",
-    "sourceMap": false,
-    "useNodeSass": false
-  },
-  {
     "outputFile": "wwwroot/css/app.css",
     "inputFile": "Styles/app.scss",
     "sourceMap": false,
