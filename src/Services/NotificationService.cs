@@ -1,7 +1,7 @@
-﻿using Frontend.Blazor.Bootstrap.Classes;
+﻿using Frontend.Blazor.Tailwind.Classes;
 using Microsoft.AspNetCore.Components;
 
-namespace Frontend.Blazor.Bootstrap.Services
+namespace Frontend.Blazor.Tailwind.Services
 {
     public class NotificationService
     {

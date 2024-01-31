@@ -1,6 +1,6 @@
-﻿using Frontend.Blazor.Bootstrap.Classes;
+﻿using Frontend.Blazor.Tailwind.Classes;
 
-namespace Frontend.Blazor.Bootstrap.Areas.Demo
+namespace Frontend.Blazor.Tailwind.Areas.Demo
 {
     public static class DemoSideNavLinks
     {

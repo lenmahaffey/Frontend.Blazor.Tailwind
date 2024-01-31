@@ -1,8 +1,8 @@
-﻿using Frontend.Blazor.Bootstrap.Classes;
-using Frontend.Blazor.Bootstrap.Services;
+﻿using Frontend.Blazor.Tailwind.Classes;
+using Frontend.Blazor.Tailwind.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace Frontend.Blazor.Bootstrap.Layout.Components
+namespace Frontend.Blazor.Tailwind.Layout.Components
 {
     public partial class NotificationContainer : IDisposable
     {

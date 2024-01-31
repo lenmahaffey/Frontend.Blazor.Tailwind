@@ -1,8 +1,8 @@
-﻿using Frontend.Blazor.Bootstrap.Classes;
-using Frontend.Blazor.Bootstrap.Services;
+﻿using Frontend.Blazor.Tailwind.Classes;
+using Frontend.Blazor.Tailwind.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace Frontend.Blazor.Bootstrap.Areas.Demo.Components
+namespace Frontend.Blazor.Tailwind.Areas.Demo.Components
 {
     public partial class SpinnerDialogDemo
     {

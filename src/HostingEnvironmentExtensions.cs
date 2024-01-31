@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
-namespace Frontend.Blazor.Bootstrap
+namespace Frontend.Blazor.Tailwind
 {
     public static class HostingEnvironmentExtensions
     {

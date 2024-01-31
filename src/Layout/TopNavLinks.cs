@@ -1,6 +1,6 @@
-﻿using Frontend.Blazor.Bootstrap.Classes;
+﻿using Frontend.Blazor.Tailwind.Classes;
 
-namespace Frontend.Blazor.Bootstrap.Layout
+namespace Frontend.Blazor.Tailwind.Layout
 {
     public class TopNavLinks
     {

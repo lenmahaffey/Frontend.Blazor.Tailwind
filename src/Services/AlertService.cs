@@ -1,6 +1,6 @@
-﻿using Frontend.Blazor.Bootstrap.Classes;
+﻿using Frontend.Blazor.Tailwind.Classes;
 
-namespace Frontend.Blazor.Bootstrap.Services
+namespace Frontend.Blazor.Tailwind.Services
 {
     public class AlertService
     {

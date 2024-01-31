@@ -1,4 +1,4 @@
-﻿namespace Frontend.Blazor.Bootstrap.Layout.Components
+﻿namespace Frontend.Blazor.Tailwind.Layout.Components
 {
     public partial class RightSideBar
     {
